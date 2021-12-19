@@ -2,6 +2,7 @@ package org.future.foodflix;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.accessibility.AccessibilityViewCommand;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -48,7 +49,6 @@ public class MainActivity extends BaseActivities {
                 startActivityForResult(intent,1000);
 
             }
-
         });
         Button forgotbtn =findViewById(R.id.forgotbtn);
         forgotbtn.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +56,20 @@ public class MainActivity extends BaseActivities {
             public void onClick(View v) {
                 Log.e("APP","Forgot button clicked");
                 Toast.makeText(MainActivity.this,"Forgot button clicked",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Button noAccount = findViewById(R.id.NoAccountbtn);
+        noAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isDestroyed()||isFinishing()){
+                    return;
+                }
+                Snackbar.make(v,"You want to make a new account? Don't worry!", Snackbar.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this,RegistrationActivity.class);
+                intent.putExtra("name","Hungry");
+                startActivityForResult(intent,2000);
             }
         });
     }

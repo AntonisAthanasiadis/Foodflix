@@ -115,7 +115,7 @@
         android:id="@+id/forgotbtn"
         android:text="@string/forgot"
         android:backgroundTint="@color/black"
-        android:textSize="10sp"
+        android:textSize="@dimen/smallText"
         android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/NoAccountbtn"
         app:layout_constraintRight_toRightOf="parent"

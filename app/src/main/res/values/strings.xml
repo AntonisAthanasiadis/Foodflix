@@ -7,4 +7,10 @@
     <string name="loginbtn">Login</string>
     <string name="NoAccount">Create A New Account</string>
     <string name="Joke">Joke, laugh or leave</string>
+    <string name="Register">Registration</string>
+    <string name="Name">Name</string>
+    <string name="Surname">Surname</string>
+    <string name="ValidPassword">Validate Password</string>
+    <string name="SignUp">Sign Up</string>
+    <string name="required">Required</string>
 </resources>

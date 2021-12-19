@@ -7,8 +7,89 @@
     android:background="@color/black"
     tools:context=".RegistrationActivity">
 
+    <TextView
+        android:id="@+id/Register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Register"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/Username"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
 
     <com.google.android.material.textfield.TextInputLayout
+        app:helperText="@string/required"
+        app:helperTextTextColor="@color/lRed"
+        android:id="@+id/Username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/Register"
+        app:layout_constraintBottom_toTopOf="@id/Name"
+        app:boxCornerRadiusBottomStart="@dimen/med_pad"
+        app:boxCornerRadiusBottomEnd="@dimen/med_pad"
+        app:boxCornerRadiusTopStart="@dimen/med_pad"
+        app:boxCornerRadiusTopEnd="@dimen/med_pad"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/Username" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        app:helperText="@string/required"
+        app:helperTextTextColor="@color/lRed"
+        android:id="@+id/Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/Username"
+        app:layout_constraintBottom_toTopOf="@id/Surname"
+        app:boxBackgroundColor="@color/white"
+        app:boxCornerRadiusBottomStart="@dimen/med_pad"
+        app:boxCornerRadiusBottomEnd="@dimen/med_pad"
+        app:boxCornerRadiusTopStart="@dimen/med_pad"
+        app:boxCornerRadiusTopEnd="@dimen/med_pad"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/Name" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        app:helperText="@string/required"
+        app:helperTextTextColor="@color/lRed"
+        android:id="@+id/Surname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/Name"
+        app:layout_constraintBottom_toTopOf="@id/loginPasswordLayout"
+        app:boxCornerRadiusBottomStart="@dimen/med_pad"
+        app:boxCornerRadiusBottomEnd="@dimen/med_pad"
+        app:boxCornerRadiusTopStart="@dimen/med_pad"
+        app:boxCornerRadiusTopEnd="@dimen/med_pad"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/Surname" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        app:helperText="@string/required"
+        app:helperTextTextColor="@color/lRed"
         android:id="@+id/loginPasswordLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,7 +97,13 @@
         app:boxBackgroundColor="@color/white"
         app:passwordToggleEnabled="true"
         app:layout_constraintTop_toBottomOf="@id/Surname"
-        app:layout_constraintBottom_toTopOf="@id/ValidPass">
+        app:layout_constraintBottom_toTopOf="@id/ValidPass"
+        app:boxCornerRadiusBottomStart="@dimen/med_pad"
+        app:boxCornerRadiusBottomEnd="@dimen/med_pad"
+        app:boxCornerRadiusTopStart="@dimen/med_pad"
+        app:boxCornerRadiusTopEnd="@dimen/med_pad"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordInput"
@@ -25,82 +112,35 @@
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/Username"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
-
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/Username"
-        app:layout_constraintBottom_toTopOf="@id/Surname"
-        app:boxBackgroundColor="@color/white"
-        >
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Name" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:boxBackgroundColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/textView"
-        app:layout_constraintBottom_toTopOf="@id/Name">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Username" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Surname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:boxBackgroundColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/Name"
-        app:layout_constraintBottom_toTopOf="@id/loginPasswordLayout">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Surname" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
+        app:helperText="@string/required"
+        app:helperTextTextColor="@color/lRed"
         android:id="@+id/ValidPass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:boxBackgroundColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/loginPasswordLayout"
-        app:layout_constraintBottom_toTopOf="@id/button"
-        app:passwordToggleEnabled="true">
+        app:layout_constraintBottom_toTopOf="@id/signUp"
+        app:passwordToggleEnabled="true"
+        app:boxCornerRadiusBottomStart="@dimen/med_pad"
+        app:boxCornerRadiusBottomEnd="@dimen/med_pad"
+        app:boxCornerRadiusTopStart="@dimen/med_pad"
+        app:boxCornerRadiusTopEnd="@dimen/med_pad"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Validate Password"
+            android:hint="@string/ValidPassword"
             android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/signUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
+        android:text="@string/SignUp"
         app:layout_constraintTop_toBottomOf="@id/ValidPass"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
