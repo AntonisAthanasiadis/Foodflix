@@ -7,16 +7,122 @@
     android:background="#000000"
     tools:context=".MainActivity">
 
-    <TextView
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello Future!"
+        android:id="@+id/backbtn"
+        android:paddingTop="@dimen/med_pad"
+        android:paddingLeft="@dimen/med_pad"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:backgroundTint="@color/black"
+        android:src="@drawable/ic_round_arrow_back_ios_24"
+        />
+
+    <TextView
+        android:id="@+id/loginText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Login"
         android:textAlignment="center"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/loginUsernameLayout"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/loginUsernameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/loginText"
+        app:layout_constraintBottom_toTopOf="@id/loginPasswordLayout"
+        android:layout_marginTop="@dimen/med_pad"
+        app:boxBackgroundColor="@color/white"
+        android:hint="@string/Username"
+        android:textColorHint="@color/black">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/usernameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/loginPasswordLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/loginUsernameLayout"
+        app:layout_constraintBottom_toTopOf="@id/loginbtn"
+        android:layout_marginTop="@dimen/min_pad"
+        app:boxBackgroundColor="@color/white"
+        android:hint="@string/Password"
+        app:passwordToggleEnabled="true"
+        android:textColorHint="@color/black"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/loginbtn"
+        app:layout_constraintTop_toBottomOf="@id/loginPasswordLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:text="@string/loginbtn"
+        app:layout_constraintBottom_toTopOf="@id/or"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+        android:id="@+id/or"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/NoAccountbtn"
+
+        android:text="or"
+        android:textSize="16sp"
+        android:textColor="@color/lRed"
+        app:layout_constraintTop_toBottomOf="@id/loginbtn"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+    </TextView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/NoAccountbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:text="@string/NoAccount"
+        android:textSize="16sp"
+        android:textColor="@color/lRed"
+        app:layout_constraintTop_toBottomOf="@id/or"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/forgotbtn" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/forgotbtn"
+        android:text="@string/forgot"
+        android:backgroundTint="@color/black"
+        android:textSize="10sp"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/NoAccountbtn"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

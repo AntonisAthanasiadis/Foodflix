@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Foodflix</string>
+    <string name="Login">Login to your account</string>
+    <string name="Username">Username</string>
+    <string name="Password">Password</string>
+    <string name="forgot">Forgot password?</string>
+    <string name="loginbtn">Login</string>
+    <string name="NoAccount">Create A New Account</string>
+    <string name="Joke">Joke, laugh or leave</string>
 </resources>
