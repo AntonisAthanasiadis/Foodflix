@@ -20,15 +20,15 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        String name= getIntent().getExtras().getString("name");
-        Log.d("APP",name);
+        //String name= getIntent().getExtras().getString("name");
+        //Log.d("APP",name);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        String name= getIntent().getExtras().getString("name");
-        Log.d("APP",name);
+        //String name= getIntent().getExtras().getString("name");
+        //Log.d("APP",name);
     }
 
     @Override

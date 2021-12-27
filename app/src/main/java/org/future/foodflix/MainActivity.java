@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -43,19 +42,46 @@ public class MainActivity extends BaseActivities {
                 if (isDestroyed()||isFinishing()){
                     return;
                 }
-                Snackbar.make(v,"Login Button is Clicked!", Snackbar.LENGTH_SHORT).show();
+
+                TextView user = findViewById(R.id.usernameInput);
+                String existingUser = user.getText().toString();
+
+                TextView pass = findViewById(R.id.passwordInput);
+                String existingPassword = pass.getText().toString();
+
+                if(existingUser.equals("") || existingPassword.equals(""))
+                    Toast.makeText(MainActivity.this,"Please input your logins!", Toast.LENGTH_SHORT).show();
+                else if(existingUser.equals("user") && existingPassword.equals("name")) {
+                    Toast.makeText(MainActivity.this,"Logged in successfully!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                    startActivityForResult(intent, 1000);
+                }
+
+            }
+        });
+
+        Button guestbtn= findViewById(R.id.guestbtn);
+        guestbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isDestroyed()||isFinishing()){
+                    return;
+                }
+                Toast.makeText(MainActivity.this,"Logged in as guest!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this,SecondActivity.class);
-                intent.putExtra("name","Hungry");
+                startActivity(intent);
                 startActivityForResult(intent,1000);
 
             }
         });
+
+
         Button forgotbtn =findViewById(R.id.forgotbtn);
         forgotbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.e("APP","Forgot button clicked");
-                Toast.makeText(MainActivity.this,"Forgot button clicked",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"Forgot button clicked!",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -66,9 +92,8 @@ public class MainActivity extends BaseActivities {
                 if (isDestroyed()||isFinishing()){
                     return;
                 }
-                Snackbar.make(v,"You want to make a new account? Don't worry!", Snackbar.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"New account coming right up!",Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this,RegistrationActivity.class);
-                intent.putExtra("name","Hungry");
                 startActivityForResult(intent,2000);
             }
         });

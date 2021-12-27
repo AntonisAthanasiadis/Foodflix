@@ -37,6 +37,7 @@
         android:layout_marginLeft="20dp">
 
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/regUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/Username" />
@@ -60,6 +61,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/regFirst"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/Name" />
@@ -82,6 +84,7 @@
         android:layout_marginLeft="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/regLast"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/Surname" />
@@ -106,7 +109,7 @@
         android:layout_marginLeft="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/passwordInput"
+            android:id="@+id/regPass1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword" />
@@ -130,6 +133,7 @@
         android:layout_marginLeft="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/regPass2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/ValidPassword"

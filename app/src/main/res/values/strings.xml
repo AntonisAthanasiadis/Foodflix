@@ -13,4 +13,5 @@
     <string name="ValidPassword">Validate Password</string>
     <string name="SignUp">Sign Up</string>
     <string name="required">Required</string>
+    <string name="guestbtn">Guest</string>
 </resources>
