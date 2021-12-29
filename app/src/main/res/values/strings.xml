@@ -14,4 +14,20 @@
     <string name="SignUp">Sign Up</string>
     <string name="required">Required</string>
     <string name="guestbtn">Guest</string>
+
+    <string-array name="Titles">
+        <item>Chicken</item>
+        <item>Rice</item>
+        <item>Pastitsio</item>
+        <item>Arakas</item>
+        <item>Fasolakia</item>
+    </string-array>
+
+    <string-array name="Descriptions">
+        <item>Chicken description</item>
+        <item>Rice description</item>
+        <item>Pastitsio description</item>
+        <item>Arakas description</item>
+        <item>Fasolakia description</item>
+    </string-array>
 </resources>
