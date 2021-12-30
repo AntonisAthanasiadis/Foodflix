@@ -1,11 +1,22 @@
-package org.future.foodflix;
+package org.future.foodflix.RecyclerView;
 
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+import org.future.foodflix.MainActivity;
+import org.future.foodflix.Network.NetWorkActivity;
+import org.future.foodflix.R;
+import org.future.foodflix.RecyclerView.MyAdapter;
+import org.future.foodflix.RegistrationActivity;
 
 public class SecondActivity extends AppCompatActivity {
 
@@ -38,12 +49,24 @@ public class SecondActivity extends AppCompatActivity {
 
     }
 
-//    @Override
-//    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-//        super.onPostCreate(savedInstanceState);
-//        //String name= getIntent().getExtras().getString("name");
-//        //Log.d("APP",name);
-//    }
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+
+        Button toNetworkActivity = findViewById(R.id.Rbtn1);
+        toNetworkActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isDestroyed()||isFinishing()){
+                    return;
+                }
+                Intent intent = new Intent(SecondActivity.this, NetWorkActivity.class);
+                startActivityForResult(intent,2000);
+            }
+        });
+        //String name= getIntent().getExtras().getString("name");
+        //Log.d("APP",name);
+    }
 //
 //    @Override
 //    protected void onResume() {

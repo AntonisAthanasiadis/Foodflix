@@ -17,7 +17,7 @@ import org.future.foodflix.CheckActions;
 import org.future.foodflix.R;
 import org.future.foodflix.Storage.AsynchTasks.InsertDb;
 import org.future.foodflix.Storage.Database.DatabaseSchema;
-import org.future.foodflix.Storage.Database.Users;
+import org.future.foodflix.Storage.Database.User;
 
 public class StorageActions extends AppCompatActivity {
     @NonNull
@@ -63,8 +63,9 @@ public class StorageActions extends AppCompatActivity {
             public void onClick(View v) {
                 CheckActions check = new CheckActions();
                 String eval = check.eval(pass1, pass2, newUser, firstName, lastName);
+
                 if (eval.equals("Created new account successfully!")) {
-                    Users user = new Users(Username, Name, Surname, Password);
+                    User user = new User(Username, Name, Surname, Password);
                     new InsertDb(database, new InsertDb.Listener() {
                         @Override
                         public void onResult(boolean result) {

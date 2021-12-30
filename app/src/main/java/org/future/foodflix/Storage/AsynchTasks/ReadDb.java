@@ -3,14 +3,14 @@ package org.future.foodflix.Storage.AsynchTasks;
 import android.os.AsyncTask;
 
 import org.future.foodflix.Storage.Database.DatabaseSchema;
-import org.future.foodflix.Storage.Database.Users;
+import org.future.foodflix.Storage.Database.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadDb extends AsyncTask<Void,Void, List<Users>> {
+public class ReadDb extends AsyncTask<Void,Void, List<User>> {
     public interface Listener{
-        public void onResult(List<Users> result);}
+        public void onResult(List<User> result);}
 
     private DatabaseSchema database;
     private Listener listener;
@@ -26,7 +26,7 @@ public class ReadDb extends AsyncTask<Void,Void, List<Users>> {
     }
 
     @Override
-    protected List<Users> doInBackground(Void... voids) {
+    protected List<User> doInBackground(Void... voids) {
         try{
             return database.getUserDao().read();
         }catch(Exception exception){
@@ -35,7 +35,7 @@ public class ReadDb extends AsyncTask<Void,Void, List<Users>> {
     }
 
     @Override
-    protected void onPostExecute(List<Users> userEntities) {
+    protected void onPostExecute(List<User> userEntities) {
         super.onPostExecute(userEntities);
         listener.onResult(userEntities);
     }

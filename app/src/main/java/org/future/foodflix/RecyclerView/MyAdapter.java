@@ -1,4 +1,4 @@
-package org.future.foodflix;
+package org.future.foodflix.RecyclerView;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.zip.Inflater;
+import org.future.foodflix.R;
 
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 

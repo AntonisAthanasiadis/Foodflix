@@ -14,19 +14,19 @@ import java.util.List;
 public interface UserDAO {
 
     @Insert(onConflict = REPLACE)
-    public void save(Users data);
+    public void save(User data);
     @Insert(onConflict = REPLACE)
-    public void save(Users[] data);
+    public void save(User[] data);
 
-    @Query("SELECT * FROM Users")
+    @Query("SELECT * FROM User")
     @Nullable
-    public List<Users>read();
+    public List<User>read();
 
     @Update
-    public void update(Users data);
+    public void update(User data);
 
     @Delete
-    public void delete(Users data);
+    public void delete(User data);
     @Delete
-    public void delete(Users[] data);
+    public void delete(User[] data);
 }

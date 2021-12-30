@@ -3,9 +3,9 @@ package org.future.foodflix.Storage.AsynchTasks;
 import android.os.AsyncTask;
 
 import org.future.foodflix.Storage.Database.DatabaseSchema;
-import org.future.foodflix.Storage.Database.Users;
+import org.future.foodflix.Storage.Database.User;
 
-public class InsertDb extends AsyncTask<Users,Void,Boolean> {
+public class InsertDb extends AsyncTask<User,Void,Boolean> {
     public interface Listener{
         public void onResult(boolean result);}
 
@@ -23,9 +23,9 @@ public class InsertDb extends AsyncTask<Users,Void,Boolean> {
     }
 
     @Override
-    protected Boolean doInBackground(Users... userEntities) {
+    protected Boolean doInBackground(User... userEntities) {
         try{
-            for(Users user: userEntities){
+            for(User user: userEntities){
                 database.getUserDao().save(user);
             }
             return true;

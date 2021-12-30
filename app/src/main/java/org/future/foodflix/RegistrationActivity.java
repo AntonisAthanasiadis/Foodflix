@@ -6,10 +6,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import org.future.foodflix.CheckActions;
+
+import org.future.foodflix.RecyclerView.SecondActivity;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 public class RegistrationActivity extends BaseActivities {
 

@@ -16,7 +16,7 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize"/>
         <activity
-            android:name=".SecondActivity"
+            android:name=".RecyclerView.SecondActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -27,16 +27,18 @@
             android:exported="true"
             android:theme="@style/SplashTheme">
 
-        </activity>
-
-        <activity
-            android:name=".Network.NetWorkActivity"
-            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name=".Network.NetWorkActivity"
+            android:exported="true">
+
 
         </activity>
     </application>
