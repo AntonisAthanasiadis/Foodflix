@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.view.View.OnClickListener;
+import org.future.foodflix.CheckActions;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +22,7 @@ public class RegistrationActivity extends BaseActivities {
         Button register = findViewById(R.id.signUp);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 if (isDestroyed() || isFinishing()) {
                     return;
                 }
@@ -42,16 +42,20 @@ public class RegistrationActivity extends BaseActivities {
                 TextView p2 = findViewById(R.id.regPass2);
                 String pass2 = p2.getText().toString();
 
-                if(!pass1.equals(pass2))
-                    Toast.makeText(RegistrationActivity.this, "Passwords don't match!", Toast.LENGTH_SHORT).show();
-                else if(pass1.length()<6)
-                    Toast.makeText(RegistrationActivity.this, "Password is too short!", Toast.LENGTH_SHORT).show();
-                else if(newUser.length()>20 || pass1.length()>20 || firstName.length()>20 || lastName.length()>20)
-                    Toast.makeText(RegistrationActivity.this, "A maximum of 20 characters is accepted!", Toast.LENGTH_SHORT).show();
-                else if (newUser.equals("") || firstName.equals("") || lastName.equals(""))
-                    Toast.makeText(RegistrationActivity.this, "Please fill all the required fields!", Toast.LENGTH_SHORT).show();
-                else {
-                    Toast.makeText(RegistrationActivity.this, "Created new account successfully!", Toast.LENGTH_SHORT).show();
+//                if(!pass1.equals(pass2))
+//                    Toast.makeText(RegistrationActivity.this, "Passwords don't match!", Toast.LENGTH_SHORT).show();
+//                else if(pass1.length()<6)
+//                    Toast.makeText(RegistrationActivity.this, "Password is too short!", Toast.LENGTH_SHORT).show();
+//                else if(newUser.length()>20 || pass1.length()>20 || firstName.length()>20 || lastName.length()>20)
+//                    Toast.makeText(RegistrationActivity.this, "A maximum of 20 characters is accepted!", Toast.LENGTH_SHORT).show();
+//                else if (newUser.equals("") || firstName.equals("") || lastName.equals(""))
+//                    Toast.makeText(RegistrationActivity.this, "Please fill all the required fields!", Toast.LENGTH_SHORT).show();
+//                else {
+//                    Toast.makeText(RegistrationActivity.this, "Created new account successfully!", Toast.LENGTH_SHORT).show();
+                CheckActions check = new CheckActions();
+                String eval= check.eval(pass1, pass2, newUser, firstName, lastName);
+                Toast.makeText(RegistrationActivity.this, eval, Toast.LENGTH_SHORT).show();
+                if (eval.equals("Created new account successfully!")){
                     Intent intent = new Intent(RegistrationActivity.this, SecondActivity.class);
                     startActivityForResult(intent, 1000);
                 }
