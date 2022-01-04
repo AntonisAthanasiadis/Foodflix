@@ -8,17 +8,27 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.future.foodflix.RecyclerView.SecondActivity;
+import org.future.foodflix.Storage.AsynchTasks.InsertDb;
+import org.future.foodflix.Storage.Database.DatabaseSchema;
+import org.future.foodflix.Storage.Database.User;
+import org.future.foodflix.Storage.StorageActions;
 
 import androidx.annotation.Nullable;
+import androidx.room.Database;
+import androidx.room.Room;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 public class RegistrationActivity extends BaseActivities {
-
+    @Nullable
+    private DatabaseSchema db;
     @Override
     public int getLayoutId() {
         return R.layout.activity_registration;
     }
     @Override
     public void useUIElements() {
+        db= Room.databaseBuilder(RegistrationActivity.this, DatabaseSchema.class,"foodflix").build();
         Button register = findViewById(R.id.signUp);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,19 +37,19 @@ public class RegistrationActivity extends BaseActivities {
                     return;
                 }
 
-                TextView user = findViewById(R.id.regUser);
+                TextInputEditText user = findViewById(R.id.regUser);
                 String newUser = user.getText().toString();
 
-                TextView name = findViewById(R.id.regFirst);
+                TextInputEditText name = findViewById(R.id.regFirst);
                 String firstName = name.getText().toString();
 
-                TextView Lname = findViewById(R.id.regLast);
+                TextInputEditText Lname = findViewById(R.id.regLast);
                 String lastName = Lname.getText().toString();
 
-                TextView p1 = findViewById(R.id.regPass1);
+                TextInputEditText p1 = findViewById(R.id.regPass1);
                 String pass1 = p1.getText().toString();
 
-                TextView p2 = findViewById(R.id.regPass2);
+                TextInputEditText p2 = findViewById(R.id.regPass2);
                 String pass2 = p2.getText().toString();
 
 //                if(!pass1.equals(pass2))
@@ -56,7 +66,15 @@ public class RegistrationActivity extends BaseActivities {
                 String eval= check.eval(pass1, pass2, newUser, firstName, lastName);
                 Toast.makeText(RegistrationActivity.this, eval, Toast.LENGTH_SHORT).show();
                 if (eval.equals("Created new account successfully!")){
-                    Intent intent = new Intent(RegistrationActivity.this, SecondActivity.class);
+                    db = Room.databaseBuilder(RegistrationActivity.this,DatabaseSchema.class,"foodflix").build();
+
+                    new InsertDb(db, new InsertDb.Listener() {
+                        @Override
+                        public void onResult(boolean result) {
+                            Toast.makeText(RegistrationActivity.this, "Data inserted!!! " + result, Toast.LENGTH_SHORT).show();
+                        }
+                    }).execute(new User(newUser,firstName,lastName,pass1));
+                    Intent intent = new Intent(RegistrationActivity.this, SeeDatabaseActivity.class);
                     startActivityForResult(intent, 1000);
                 }
 

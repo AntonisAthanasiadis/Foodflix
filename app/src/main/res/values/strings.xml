@@ -6,7 +6,7 @@
     <string name="forgot">Forgot password?</string>
     <string name="loginbtn">Login</string>
     <string name="NoAccount">Create A New Account</string>
-    <string name="Joke">Joke, laugh or leave</string>
+    <string name="Joke">Did lorda cut you again?</string>
     <string name="Register">Registration</string>
     <string name="Name">Name</string>
     <string name="Surname">Surname</string>
@@ -14,6 +14,7 @@
     <string name="SignUp">Sign Up</string>
     <string name="required">Required</string>
     <string name="guestbtn">Guest</string>
+    <string name="Search">What would you like to search?</string>
 
     <string-array name="Titles">
         <item>Chicken</item>

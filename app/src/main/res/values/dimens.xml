@@ -3,4 +3,5 @@
     <dimen name="med_pad">35dp</dimen>
     <dimen name="min_pad">16dp</dimen>
     <dimen name="smallText">10sp</dimen>
+    <dimen name="med_text">20sp</dimen>
 </resources>

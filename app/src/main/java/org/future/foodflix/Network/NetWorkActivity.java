@@ -14,6 +14,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
 
 import org.future.foodflix.R;
@@ -27,26 +28,25 @@ public class NetWorkActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_net_work);
-
+        queue = Volley.newRequestQueue(this);
 
     }
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-
-        queue = Volley.newRequestQueue(this);
         gson = new Gson();
+
+        String query= findViewById(R.id.searchInput).toString();
+
         // Instantiate the RequestQueue.
-        String url = "https://api.edamam.com/api/recipes/v2?" +
-                "type=public&" +
-                "q=biryani&" +
-                "app_id=85236044" +
-                "&app_key=d2448eb147c0c48689ed8a40d9c107de" +
-                "&calories=50-100" ;
+        String url = "https://api.edamam.com/api/food-database/v2/parser?" +
+                "app_id=c0bb7b58"+
+                "&app_key=ad2b9082c4731f6b6a1e4193b90607e7"+
+                "&ingr="+ query;
 
 
-        Button nwbtn= findViewById(R.id.btnnetwork);
+        Button nwbtn= findViewById(R.id.searchbtn);
         nwbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +71,6 @@ public class NetWorkActivity extends AppCompatActivity {
 
                 // Add the request to the RequestQueue.
                 queue.add(stringRequest);
-
             }
 
             });

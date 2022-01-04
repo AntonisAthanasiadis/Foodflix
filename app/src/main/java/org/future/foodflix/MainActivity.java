@@ -1,8 +1,15 @@
 package org.future.foodflix;
 
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
+
+import static java.util.Collections.emptyList;
+
 import androidx.annotation.Nullable;
+import androidx.room.Database;
+import androidx.room.Room;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -10,10 +17,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 import org.future.foodflix.RecyclerView.SecondActivity;
+import org.future.foodflix.Storage.AsynchTasks.LoginCheck;
+import org.future.foodflix.Storage.AsynchTasks.ReadDb;
+import org.future.foodflix.Storage.Database.DatabaseSchema;
+import org.future.foodflix.Storage.Database.User;
+
+import java.util.Collection;
+import java.util.List;
+
 
 public class MainActivity extends BaseActivities {
-
+    @Nullable
+    private DatabaseSchema db;
     @Override
     public int getLayoutId() {
         return R.layout.activity_main;
@@ -34,26 +52,45 @@ public class MainActivity extends BaseActivities {
 
         Button loginbtn= findViewById(R.id.loginbtn);
         loginbtn.setOnClickListener(new View.OnClickListener() {
+//            @SneakyThrows
             @Override
             public void onClick(View v) {
                 if (isDestroyed()||isFinishing()){
                     return;
                 }
 
-                TextView user = findViewById(R.id.usernameInput);
+                TextInputEditText user = findViewById(R.id.usernameInput);
                 String existingUser = user.getText().toString();
 
-                TextView pass = findViewById(R.id.passwordInput);
+                TextInputEditText pass = findViewById(R.id.passwordInput);
                 String existingPassword = pass.getText().toString();
 
-                if(existingUser.equals("") || existingPassword.equals(""))
-                    Toast.makeText(MainActivity.this,"Please input your logins!", Toast.LENGTH_SHORT).show();
-                else if(existingUser.equals("user") && existingPassword.equals("name")) {
-                    Toast.makeText(MainActivity.this,"Logged in successfully!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                    startActivityForResult(intent, 1000);
+                db = Room.databaseBuilder(MainActivity.this, DatabaseSchema.class,"foodflix").build();
+                new  ReadDb(db, new ReadDb.Listener() {
+                    @Override
+                    public void onResult(List<User> result) {
+                        Toast.makeText(MainActivity.this, "Read", Toast.LENGTH_SHORT).show();
+                    }
+                }).execute();
+                if(existingPassword.equals(""))
+                    Toast.makeText(MainActivity.this,"Please input your password!", Toast.LENGTH_SHORT).show();
+                else if(existingUser.equals("")) {
+                    Toast.makeText(MainActivity.this, "Please input your password!", Toast.LENGTH_SHORT).show();
                 }
 
+                AsyncTask<String, Void, Boolean> check = new LoginCheck(db, new LoginCheck.Listener() {
+                    @Override
+                    public void onResult(boolean result) {
+                        Toast.makeText(MainActivity.this,String.valueOf(result),Toast.LENGTH_SHORT).show();
+                        if (result) {
+                            Toast.makeText(MainActivity.this, "Logged in successfully!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(MainActivity.this, SeeDatabaseActivity.class);
+                            startActivityForResult(intent, 1000);
+                        } else {
+                            Toast.makeText(MainActivity.this, "Please Try Again!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }).execute(existingUser,existingPassword);
             }
         });
 
@@ -77,7 +114,8 @@ public class MainActivity extends BaseActivities {
         forgotbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("APP","Forgot button clicked");
+                Intent intent = new Intent(MainActivity.this, SeeDatabaseActivity.class);
+                startActivityForResult(intent,1000);
                 Toast.makeText(MainActivity.this,"Forgot button clicked!",Toast.LENGTH_SHORT).show();
             }
         });
