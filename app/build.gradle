@@ -29,6 +29,8 @@ android {
 
 dependencies {
     implementation 'androidx.room:room-common:2.4.0'
+    implementation 'androidx.navigation:navigation-ui:2.3.5'
+    implementation 'androidx.navigation:navigation-fragment:2.3.5'
     def room_version = "2.4.0"
 
     implementation "androidx.room:room-runtime:$room_version"

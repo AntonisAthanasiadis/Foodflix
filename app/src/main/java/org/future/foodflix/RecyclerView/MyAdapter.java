@@ -6,11 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.future.foodflix.R;
 
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
+
+//    Fragment fg;
 
     Context ct;
     String titles[], desc[];
@@ -21,8 +24,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
         this.titles = titles;
         this.desc = desc;
         this.images = images;
-
     }
+
+
+//    public MyAdapter(Fragment fg,String titles[], String desc[], int images[]){
+//        this.fg= fg;
+//        this.titles = titles;
+//        this.desc = desc;
+//        this.images = images;
+//    }
 
     @NonNull
     @Override

@@ -75,7 +75,7 @@ public class MainActivity extends BaseActivities {
                 if(existingPassword.equals(""))
                     Toast.makeText(MainActivity.this,"Please input your password!", Toast.LENGTH_SHORT).show();
                 else if(existingUser.equals("")) {
-                    Toast.makeText(MainActivity.this, "Please input your password!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Please input your Username!", Toast.LENGTH_SHORT).show();
                 }
 
                 AsyncTask<String, Void, Boolean> check = new LoginCheck(db, new LoginCheck.Listener() {
@@ -102,7 +102,7 @@ public class MainActivity extends BaseActivities {
                     return;
                 }
                 Toast.makeText(MainActivity.this,"Logged in as guest!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+                Intent intent = new Intent(MainActivity.this,NavigationDrawerActivity.class);
                 startActivity(intent);
                 startActivityForResult(intent,1000);
 
