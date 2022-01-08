@@ -84,7 +84,7 @@ public class MainActivity extends BaseActivities {
                         Toast.makeText(MainActivity.this,String.valueOf(result),Toast.LENGTH_SHORT).show();
                         if (result) {
                             Toast.makeText(MainActivity.this, "Logged in successfully!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(MainActivity.this, SeeDatabaseActivity.class);
+                            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                             startActivityForResult(intent, 1000);
                         } else {
                             Toast.makeText(MainActivity.this, "Please Try Again!", Toast.LENGTH_SHORT).show();
@@ -102,7 +102,7 @@ public class MainActivity extends BaseActivities {
                     return;
                 }
                 Toast.makeText(MainActivity.this,"Logged in as guest!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainActivity.this,NavigationDrawerActivity.class);
+                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
                 startActivity(intent);
                 startActivityForResult(intent,1000);
 
