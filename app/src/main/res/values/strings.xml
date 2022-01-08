@@ -14,6 +14,8 @@
     <string name="SignUp">Sign Up</string>
     <string name="required">Required</string>
     <string name="guestbtn">Guest</string>
+    <string name="textview">textview</string>
+    <string name="category">category</string>
 
     <string-array name="Titles">
         <item>Chicken</item>
