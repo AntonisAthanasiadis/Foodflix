@@ -66,6 +66,8 @@
     <string name="required">Required</string>
     <string name="guestbtn">Guest</string>
     <string name="UsersProfile">User\'s Profile</string>
+    <string name="textview">textview</string>
+    <string name="category">category</string>
 
     <string-array name="Titles">
         <item>Chicken</item>
