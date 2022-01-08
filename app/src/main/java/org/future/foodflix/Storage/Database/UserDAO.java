@@ -18,6 +18,9 @@ public interface UserDAO {
     @Insert(onConflict = REPLACE)
     public void save(User[] data);
 
+    @Query("SELECT * FROM User WHERE Username LIKE :name AND Password LIKE :pass")
+    public boolean checkLogin(String name,String pass);
+
     @Query("SELECT * FROM User")
     @Nullable
     public List<User>read();
