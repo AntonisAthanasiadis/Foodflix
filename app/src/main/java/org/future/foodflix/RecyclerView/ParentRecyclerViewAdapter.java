@@ -65,9 +65,38 @@ public class ParentRecyclerViewAdapter extends RecyclerView.Adapter<ParentRecycl
         if (parentModelArrayList.get(position).foodCategory().equals("Meat")) {
             arrayList.add(new ChildModel(R.drawable.pastitsio,"Pastitsio","Pastitsio"));
             arrayList.add(new ChildModel(R.drawable.souvlaki," Souvlaki"," Souvlaki"));
+            arrayList.add(new ChildModel(R.drawable.toast, "Toast","Toast"));
+            arrayList.add(new ChildModel(R.drawable.tiropita, "Tiropita","Tiropita" ));
         }
 
         if (parentModelArrayList.get(position).foodCategory().equals("Snack")) {
+            arrayList.add(new ChildModel(R.drawable.toast, "Toast","Toast"));
+            arrayList.add(new ChildModel(R.drawable.tiropita, "Tiropita","Tiropita" ));
+            arrayList.add(new ChildModel(R.drawable.toast, "Toast","Toast"));
+            arrayList.add(new ChildModel(R.drawable.tiropita, "Tiropita","Tiropita" ));
+        }
+
+        if (parentModelArrayList.get(position).foodCategory().equals("Category3")) {
+            arrayList.add(new ChildModel(R.drawable.toast, "Toast","Toast"));
+            arrayList.add(new ChildModel(R.drawable.tiropita, "Tiropita","Tiropita" ));
+        }
+            if (parentModelArrayList.get(position).foodCategory().equals("Category4")) {
+            arrayList.add(new ChildModel(R.drawable.toast, "Toast","Toast"));
+            arrayList.add(new ChildModel(R.drawable.tiropita, "Tiropita","Tiropita" ));
+        }
+        if (parentModelArrayList.get(position).foodCategory().equals("Category5")) {
+            arrayList.add(new ChildModel(R.drawable.toast, "Toast","Toast"));
+            arrayList.add(new ChildModel(R.drawable.tiropita, "Tiropita","Tiropita" ));
+        }
+        if (parentModelArrayList.get(position).foodCategory().equals("Category6")) {
+            arrayList.add(new ChildModel(R.drawable.toast, "Toast","Toast"));
+            arrayList.add(new ChildModel(R.drawable.tiropita, "Tiropita","Tiropita" ));
+        }
+        if (parentModelArrayList.get(position).foodCategory().equals("Category7")) {
+            arrayList.add(new ChildModel(R.drawable.toast, "Toast","Toast"));
+            arrayList.add(new ChildModel(R.drawable.tiropita, "Tiropita","Tiropita" ));
+        }
+        if (parentModelArrayList.get(position).foodCategory().equals("Category8")) {
             arrayList.add(new ChildModel(R.drawable.toast, "Toast","Toast"));
             arrayList.add(new ChildModel(R.drawable.tiropita, "Tiropita","Tiropita" ));
         }

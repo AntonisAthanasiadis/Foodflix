@@ -16,6 +16,9 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize"/>
         <activity
+            android:name=".RecyclerView.MainPageRecycler"
+            android:exported="false" />
+        <activity
             android:name=".RecyclerView.SecondActivity"
             android:exported="false" />
         <activity

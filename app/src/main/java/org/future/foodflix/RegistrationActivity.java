@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.future.foodflix.RecyclerView.SecondActivity;
+import org.future.foodflix.RecyclerView.MainPageRecycler;
 
 import androidx.annotation.Nullable;
 
@@ -56,7 +56,7 @@ public class RegistrationActivity extends BaseActivities {
                 String eval= check.eval(pass1, pass2, newUser, firstName, lastName);
                 Toast.makeText(RegistrationActivity.this, eval, Toast.LENGTH_SHORT).show();
                 if (eval.equals("Created new account successfully!")){
-                    Intent intent = new Intent(RegistrationActivity.this, SecondActivity.class);
+                    Intent intent = new Intent(RegistrationActivity.this, MainPageRecycler.class);
                     startActivityForResult(intent, 1000);
                 }
 

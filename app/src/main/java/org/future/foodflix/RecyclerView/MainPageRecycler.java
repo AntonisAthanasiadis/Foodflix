@@ -29,6 +29,8 @@ public class MainPageRecycler extends AppCompatActivity {
         parentModelArrayList.add(new ParentModel("Category4"));
         parentModelArrayList.add(new ParentModel("Category5"));
         parentModelArrayList.add(new ParentModel("Category6"));
+        parentModelArrayList.add(new ParentModel("Category7"));
+        parentModelArrayList.add(new ParentModel("Category8"));
         parentRecyclerView = findViewById(R.id.parent_recyclerview);
         parentRecyclerView.setHasFixedSize(true);
         parentLayoutManager = new LinearLayoutManager(this);

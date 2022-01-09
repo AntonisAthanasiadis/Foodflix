@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.future.foodflix.RecyclerView.SecondActivity;
+import org.future.foodflix.RecyclerView.MainPageRecycler;
 
 public class MainActivity extends BaseActivities {
 
@@ -50,7 +50,7 @@ public class MainActivity extends BaseActivities {
                     Toast.makeText(MainActivity.this,"Please input your logins!", Toast.LENGTH_SHORT).show();
                 else if(existingUser.equals("user") && existingPassword.equals("name")) {
                     Toast.makeText(MainActivity.this,"Logged in successfully!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                    Intent intent = new Intent(MainActivity.this, MainPageRecycler.class);
                     startActivityForResult(intent, 1000);
                 }
 
@@ -65,7 +65,7 @@ public class MainActivity extends BaseActivities {
                     return;
                 }
                 Toast.makeText(MainActivity.this,"Logged in as guest!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+                Intent intent = new Intent(MainActivity.this,MainPageRecycler.class);
                 startActivity(intent);
                 startActivityForResult(intent,1000);
 
