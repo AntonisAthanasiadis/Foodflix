@@ -1,5 +1,6 @@
 package org.future.foodflix;
 
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -28,5 +29,27 @@ public class CheckActions {
         else{
             return "Created new account successfully!";
         }
+
+    }
+    public static String ingredients(String string){
+        String[] strings = string.split(",");
+        String s="";
+        for (String str:strings){
+            s+=str.toLowerCase().trim();
+            s+="%2C";
+        }
+        s=s.substring(0,s.length()-3);
+        return s;
+    }
+
+    public static String Checked(CheckBox[] checkBoxes){
+        String s = "";
+        for (CheckBox checkBox:checkBoxes){
+            if (checkBox.isChecked()){
+                s+="&health=";
+                s+=checkBox.getText().toString();
+            }
+        }
+        return s;
     }
 }

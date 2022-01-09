@@ -6,8 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    android:padding="16dp"
-    >
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/searchbackbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/dRed"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:src="@drawable/ic_round_arrow_back_ios_24"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/fragTxt"
@@ -17,13 +29,13 @@
         android:text="@string/Search"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/fragInput"
+        app:layout_constraintBottom_toTopOf="@id/foodInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fragInput"
+        android:id="@+id/foodInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/Example"
@@ -34,10 +46,11 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fragTxt"
+        app:layout_constraintBottom_toTopOf="@id/diet"
         app:startIconDrawable="@drawable/ic_baseline_search_24">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@id/fragInput"
+            android:id="@id/foodInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text" />
@@ -48,14 +61,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.56" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineH"
+        android:id="@+id/guidelineF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.18" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.04" />
 
     <TextView
         android:id="@+id/diet"
@@ -64,118 +77,112 @@
         android:text="Diet"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/checkVegetarian"
+        app:layout_constraintBottom_toTopOf="@id/vegetarian"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="@id/guideline"
-        app:layout_constraintTop_toBottomOf="@id/guidelineH" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/foodInput" />
 
     <CheckBox
-        android:id="@+id/checkVegetarian"
+        android:id="@+id/vegetarian"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onCheckboxClicked"
-        android:text="Vegeterian"
+        android:text="vegeterian"
         android:textColor="@color/white"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@id/checkVegan"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/vegan"
+        app:layout_constraintLeft_toRightOf="@id/guidelineF"
         app:layout_constraintTop_toBottomOf="@id/diet" />
 
     <CheckBox
-        android:id="@+id/checkVegan"
+        android:id="@+id/vegan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onCheckboxClicked"
-        android:text="Vegan"
+        android:text="vegan"
         android:textColor="@color/white"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@id/checkLowFat"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/checkVegetarian" />
+        app:layout_constraintBottom_toTopOf="@id/low_fat"
+        app:layout_constraintLeft_toRightOf="@id/guidelineF"
+        app:layout_constraintTop_toBottomOf="@id/vegetarian" />
 
     <CheckBox
-        android:id="@+id/checkLowFat"
+        android:id="@+id/low_fat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onCheckboxClicked"
-        android:text="Low-Fat"
+        android:text="low-fat-abs"
         android:textColor="@color/white"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@id/checkHighProtein"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/checkVegan" />
+        app:layout_constraintBottom_toTopOf="@id/pork"
+        app:layout_constraintLeft_toRightOf="@id/guidelineF"
+        app:layout_constraintTop_toBottomOf="@id/vegan" />
 
     <CheckBox
-        android:id="@+id/checkHighProtein"
+        android:id="@+id/pork"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onCheckboxClicked"
-        android:text="High-Protein"
+        android:text="pork-free"
         android:textColor="@color/white"
         android:textSize="15sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/checkLowFat" />
+        app:layout_constraintLeft_toRightOf="@id/guidelineF"
+        app:layout_constraintTop_toBottomOf="@id/low_fat"
+        app:layout_constraintBottom_toTopOf="@id/search_button"/>
 
-    <TextView
-        android:id="@+id/allergies"
+
+    <CheckBox
+        android:id="@+id/gluten"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Allergies"
+        android:paddingLeft="8dp"
+        android:text="gluten-free"
         android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/checkGluten"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@id/immunosupportive"
         app:layout_constraintLeft_toRightOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/diet" />
+
+    <CheckBox
+        android:id="@+id/immunosupportive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:text="immuno-supportive"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@id/wheat"
+        app:layout_constraintLeft_toRightOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/gluten" />
+
+    <CheckBox
+        android:id="@+id/wheat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="wheat-free"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@id/shellfish"
+        app:layout_constraintLeft_toRightOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/immunosupportive" />
+
+    <CheckBox
+        android:id="@+id/shellfish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="shellfish-free"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintLeft_toRightOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/wheat"
+        app:layout_constraintBottom_toTopOf="@id/search_button"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/search_button"
+        android:text="@string/Searchbtn"
+        app:layout_constraintTop_toBottomOf="@id/shellfish"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guidelineH" />
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <CheckBox
-        android:id="@+id/checkGluten"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onCheckboxClicked"
-        android:paddingLeft="8dp"
-        android:text="Gluten"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@id/checkLactose"
-        app:layout_constraintLeft_toRightOf="@id/guideline"
-        app:layout_constraintTop_toBottomOf="@id/allergies" />
-
-    <CheckBox
-        android:id="@+id/checkLactose"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onCheckboxClicked"
-        android:paddingLeft="8dp"
-        android:text="Lactose"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@id/checkWheat"
-        app:layout_constraintLeft_toRightOf="@id/guideline"
-        app:layout_constraintTop_toBottomOf="@id/checkGluten" />
-
-    <CheckBox
-        android:id="@+id/checkWheat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onCheckboxClicked"
-        android:text="Wheat"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@id/checkShellfish"
-        app:layout_constraintLeft_toRightOf="@id/guideline"
-        app:layout_constraintTop_toBottomOf="@id/checkLactose" />
-
-    <CheckBox
-        android:id="@+id/checkShellfish"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onCheckboxClicked"
-        android:text="Shellfish"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintLeft_toRightOf="@id/guideline"
-        app:layout_constraintTop_toBottomOf="@id/checkWheat" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

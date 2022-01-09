@@ -10,7 +10,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.future.foodflix.MainActivity;
 import org.future.foodflix.Network.NetWorkActivity;
@@ -52,9 +55,27 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-
+        ImageView imageView =findViewById(R.id.recyclerbackbtn);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         Button toNetworkActivity = findViewById(R.id.Rbtn1);
         toNetworkActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isDestroyed()||isFinishing()){
+                    return;
+                }
+                Intent intent = new Intent(SecondActivity.this, NetWorkActivity.class);
+                startActivityForResult(intent,2000);
+            }
+        });
+
+        FloatingActionButton fab = findViewById(R.id.faButton);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isDestroyed()||isFinishing()){

@@ -1,11 +1,17 @@
 package org.future.foodflix.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import org.future.foodflix.Network.NetWorkActivity;
 import org.future.foodflix.R;
 
 import java.util.ArrayList;
@@ -37,4 +43,23 @@ public class MainPageRecycler extends AppCompatActivity {
         parentRecyclerView.setAdapter(ParentAdapter);
         ParentAdapter.notifyDataSetChanged();
     }
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+
+        FloatingActionButton fab = findViewById(R.id.mainrecyclerFaButton);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isDestroyed()||isFinishing()){
+                    return;
+                }
+                Intent intent = new Intent(MainPageRecycler.this, NetWorkActivity.class);
+                startActivityForResult(intent,2200);
+            }
+        });
+    }
+
+
 }

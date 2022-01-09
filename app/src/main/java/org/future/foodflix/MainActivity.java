@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.future.foodflix.RecyclerView.MainPageRecycler;
 import org.future.foodflix.RecyclerView.SecondActivity;
 import org.future.foodflix.Storage.AsynchTasks.LoginCheck;
 import org.future.foodflix.Storage.AsynchTasks.ReadDb;
@@ -84,7 +85,7 @@ public class MainActivity extends BaseActivities {
                         Toast.makeText(MainActivity.this,String.valueOf(result),Toast.LENGTH_SHORT).show();
                         if (result) {
                             Toast.makeText(MainActivity.this, "Logged in successfully!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(MainActivity.this, SeeDatabaseActivity.class);
+                            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                             startActivityForResult(intent, 1000);
                         } else {
                             Toast.makeText(MainActivity.this, "Please Try Again!", Toast.LENGTH_SHORT).show();
@@ -102,8 +103,7 @@ public class MainActivity extends BaseActivities {
                     return;
                 }
                 Toast.makeText(MainActivity.this,"Logged in as guest!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainActivity.this,NavigationDrawerActivity.class);
-                startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, MainPageRecycler.class);
                 startActivityForResult(intent,1000);
 
             }
