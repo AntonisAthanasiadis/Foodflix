@@ -28,12 +28,16 @@
             android:name=".RegistrationActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".RecyclerView.MainPageRecycler"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize">
+
+        </activity>
         <activity
             android:name=".RecyclerView.SecondActivity"
             android:exported="false" />
-
-        <activity android:name=".RecyclerView.MainPageRecycler"
-            android:exported="true"/>
 
         <activity
             android:name=".MainActivity"

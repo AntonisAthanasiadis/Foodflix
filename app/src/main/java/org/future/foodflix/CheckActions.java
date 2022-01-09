@@ -6,9 +6,12 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.room.Room;
 
+import com.google.android.material.slider.RangeSlider;
 import com.google.android.material.textfield.TextInputEditText;
 
 import org.future.foodflix.Storage.Database.DatabaseSchema;
+
+import java.util.List;
 
 public class CheckActions {
 
@@ -51,5 +54,16 @@ public class CheckActions {
             }
         }
         return s;
+    }
+
+    public static String calories(RangeSlider slider, String[] s) {
+        List<Float> values = slider.getValues();
+        s[0] = "";
+        for (float f : values) {
+            s[0] += String.valueOf((int) f);
+            s[0] += "-";
+        }
+        s[0] = s[0].substring(0, s[0].length() - 1);
+        return s[0];
     }
 }
