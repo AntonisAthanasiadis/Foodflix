@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -24,6 +25,7 @@ import com.google.gson.Gson;
 
 import org.future.foodflix.CheckActions;
 import org.future.foodflix.R;
+import org.future.foodflix.RecyclerView.SecondActivity;
 import org.future.foodflix.ShowSearch;
 
 public class NetWorkActivity extends AppCompatActivity {
@@ -80,7 +82,7 @@ public class NetWorkActivity extends AppCompatActivity {
                         health;
 
                 Toast.makeText(NetWorkActivity.this,url,Toast.LENGTH_SHORT).show();
-                Intent intent =new Intent(NetWorkActivity.this, ShowSearch.class);
+                Intent intent =new Intent(NetWorkActivity.this, SecondActivity.class);
                 startActivityForResult(intent,5257);
 
                 // Request a string response from the provided URL.
