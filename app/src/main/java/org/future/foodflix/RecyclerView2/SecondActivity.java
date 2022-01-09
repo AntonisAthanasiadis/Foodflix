@@ -1,4 +1,4 @@
-package org.future.foodflix.RecyclerView;
+package org.future.foodflix.RecyclerView2;
 
 
 import androidx.annotation.Nullable;
@@ -6,48 +6,46 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.Toast;
-
+import android.widget.*;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
 
-import org.future.foodflix.MainActivity;
 import org.future.foodflix.Network.NetWorkActivity;
 import org.future.foodflix.R;
-import org.future.foodflix.RecyclerView.MyAdapter;
-import org.future.foodflix.RegistrationActivity;
+import org.future.foodflix.Network.JsonResponse.JsonResponse;
+
+
+import java.util.*;
 
 public class SecondActivity extends AppCompatActivity {
 
+    private Gson gson = new Gson();
+
     RecyclerView recyclerView;
     MyAdapter myAdapter;
+    List<ListItem> listItems = new ArrayList<>();
+    JsonResponse jsonResponse;
 
-    String titles[], desc[];
-    int images[] = {R.drawable.food3,
-            R.drawable.food2,
-            R.drawable.food3,
-            R.drawable.food2,
-            R.drawable.food3};
+    static String response;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
+        listItems = (List<ListItem>) getIntent().getExtras().getSerializable("response");
         recyclerView = findViewById(R.id.RV1);
 
-        titles = getResources().getStringArray(R.array.Titles);
-        desc = getResources().getStringArray(R.array.Descriptions);
-
-        myAdapter = new MyAdapter(this,titles,desc,images);
+        myAdapter = new MyAdapter(this,listItems);
 
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
 
 
     }
@@ -55,6 +53,11 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+
+
+
+
+       // LoadRecyclerViewData(jsonResponse);
         ImageView imageView =findViewById(R.id.recyclerbackbtn);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +88,10 @@ public class SecondActivity extends AppCompatActivity {
                 startActivityForResult(intent,2000);
             }
         });
+
+
+
+
         //String name= getIntent().getExtras().getString("name");
         //Log.d("APP",name);
     }
@@ -102,4 +109,6 @@ public class SecondActivity extends AppCompatActivity {
 //        setResult(RESULT_OK);
 //        SecondActivity.this.finish();
 //    }
+
+
 }

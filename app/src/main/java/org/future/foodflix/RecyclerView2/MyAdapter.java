@@ -1,4 +1,4 @@
-package org.future.foodflix.RecyclerView;
+package org.future.foodflix.RecyclerView2;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,33 +6,27 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import org.future.foodflix.R;
 
+import java.util.List;
+
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
-//    Fragment fg;
 
     Context ct;
-    String titles[], desc[];
-    int images[];
+    List<ListItem> listItems;
 
-    public MyAdapter(Context ct, String titles[], String desc[], int images[]) {
+    public MyAdapter(Context ct, List<ListItem> listItems) {
         this.ct = ct;
-        this.titles = titles;
-        this.desc = desc;
-        this.images = images;
+        this.listItems = listItems;
     }
 
 
-//    public MyAdapter(Fragment fg,String titles[], String desc[], int images[]){
-//        this.fg= fg;
-//        this.titles = titles;
-//        this.desc = desc;
-//        this.images = images;
-//    }
+
 
     @NonNull
     @Override
@@ -44,15 +38,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.myTitle.setText(titles[position]);
-        holder.myDesc.setText(desc[position]);
-        holder.myImage.setImageResource(images[position]);
+        holder.myTitle.setText(listItems.get(position).getTitle());
+        holder.myDesc.setText("" +listItems.get(position).getCalories());
+
+        Picasso.with(ct)
+                .load(listItems.get(position).getImageURL())
+                .into(holder.myImage);
 
 
     }
 
     @Override
     public int getItemCount() {
-        return titles.length;
+        return listItems.size();
     }
 }

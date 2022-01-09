@@ -1,37 +1,34 @@
 package org.future.foodflix.Network;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.*;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
+import com.android.volley.*;
+import com.android.volley.toolbox.*;
 import com.google.gson.Gson;
 
-import org.future.foodflix.CheckActions;
+import org.future.foodflix.Network.JsonResponse.JsonResponse;
 import org.future.foodflix.R;
-import org.future.foodflix.RecyclerView.SecondActivity;
-import org.future.foodflix.ShowSearch;
+import org.future.foodflix.RecyclerView2.ListItem;
+import org.future.foodflix.RecyclerView2.SecondActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class NetWorkActivity extends AppCompatActivity {
 
     private RequestQueue queue;
     private Gson gson;
+    JsonResponse jsonResponse;
+    ArrayList<ListItem> listItems = new ArrayList<ListItem>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +38,49 @@ public class NetWorkActivity extends AppCompatActivity {
 
     }
 
+
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         gson = new Gson();
 
+        String url = "https://api.edamam.com/api/recipes/v2?type=public" +
+                "&q=chicken" +
+                "&app_id=85236044&app_key=d2448eb147c0c48689ed8a40d9c107de" +
+                "&random=true";
 
 
-        ImageView imageView =findViewById(R.id.searchbackbtn);
+        //    Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                         jsonResponse = gson.fromJson(response, JsonResponse.class);
+                        LoadRecyclerViewData(jsonResponse);
+                        //    Display the first 500 characters of the response string.
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("TAG", error.getMessage());
+            }
+        });
+
+        //   Add the request to the RequestQueue.
+        queue.add(stringRequest);
+
+        CheckBox vegetarian = findViewById(R.id.vegetarian);
+        CheckBox vegan = findViewById(R.id.vegan);
+        CheckBox lowFat = findViewById(R.id.low_fat);
+        CheckBox pork = findViewById(R.id.pork);
+        CheckBox gluten = findViewById(R.id.gluten);
+        CheckBox immune = findViewById(R.id.immunosupportive);
+        CheckBox wheat = findViewById(R.id.wheat);
+        CheckBox shellfish = findViewById(R.id.shellfish);
+        CheckBox[] Health = {vegetarian, vegan, lowFat, pork, gluten, immune, wheat, shellfish};
+
+
+        ImageView imageView = findViewById(R.id.searchbackbtn);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,65 +88,34 @@ public class NetWorkActivity extends AppCompatActivity {
             }
         });
 
-        Button nwbtn= findViewById(R.id.search_button);
+        Button nwbtn = findViewById(R.id.search_button);
         nwbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CheckBox vegetarian=findViewById(R.id.vegetarian);
-                CheckBox vegan = findViewById(R.id.vegan);
-                CheckBox lowFat= findViewById(R.id.low_fat);
-                CheckBox pork= findViewById(R.id.pork);
-                CheckBox gluten =findViewById(R.id.gluten);
-                CheckBox immune= findViewById(R.id.immunosupportive);
-                CheckBox wheat= findViewById(R.id.wheat);
-                CheckBox shellfish= findViewById(R.id.shellfish);
-                CheckBox[] Health= {vegetarian,vegan,lowFat,pork,gluten,immune,wheat,shellfish};
-
-                TextInputLayout ingrs= findViewById(R.id.foodInput);
-                String ingr= ingrs.getEditText().getText().toString();
-                String query= CheckActions.ingredients(ingr);
-                String health= CheckActions.Checked(Health);
-
-                String url = "https://api.edamam.com/api/food-database/v2/parser?" +
-                        "app_id=c0bb7b58"+
-                        "&app_key=ad2b9082c4731f6b6a1e4193b90607e7"+
-                        "&ingr="+ query+
-                        health;
-
-                Toast.makeText(NetWorkActivity.this,url,Toast.LENGTH_SHORT).show();
-                Intent intent =new Intent(NetWorkActivity.this, SecondActivity.class);
-                startActivityForResult(intent,5257);
-
-                // Request a string response from the provided URL.
-//                StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-//                        new Response.Listener<String>() {
-//                            @Override
-//                            public void onResponse(String response) {
-//                                Log.d("ELA", response.substring(0, 200));
-//                                JsonResponse jsonResponse = gson.fromJson(response, JsonResponse.class);
-//                                if (jsonResponse != null) {
-//
-//                                }
-                                // Display the first 500 characters of the response string.
-//                            }
-//                        }, new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Log.e("TAG", error.getMessage());
-//                           }
-//                });
-
-                // Add the request to the RequestQueue.
-//                queue.add(stringRequest);
+                Intent intent = new Intent(NetWorkActivity.this, SecondActivity.class);
+               intent.putExtra("response",listItems);
+                startActivity(intent);
             }
 
-            });
+        });
 
 
+        }
 
+    private void LoadRecyclerViewData(JsonResponse jsonResponse) {
+//        ProgressBar progressBar = new ProgressBar(this);
+//        progressBar.set("Loading data...");
+//        progressBar.show();
 
-
-
+        int i ;
+        for ( i=0; i < jsonResponse.getHits().size(); i++)
+            listItems.add( new ListItem(
+                    jsonResponse.getHits().get(i).getRecipe().getLabel(),
+                    jsonResponse.getHits().get(i).getRecipe().getCalories(),
+                    jsonResponse.getHits().get(i).getRecipe().getIngredientLines(),
+                    jsonResponse.getHits().get(i).getRecipe().getImages().getSMALL().getUrl()
+            ));
     }
 }
+
 
