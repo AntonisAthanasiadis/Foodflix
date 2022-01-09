@@ -70,7 +70,6 @@ public class MainActivity extends BaseActivities {
                 new  ReadDb(db, new ReadDb.Listener() {
                     @Override
                     public void onResult(List<User> result) {
-                        Toast.makeText(MainActivity.this, "Read", Toast.LENGTH_SHORT).show();
                     }
                 }).execute();
                 if(existingPassword.equals(""))
@@ -85,7 +84,7 @@ public class MainActivity extends BaseActivities {
                         Toast.makeText(MainActivity.this,String.valueOf(result),Toast.LENGTH_SHORT).show();
                         if (result) {
                             Toast.makeText(MainActivity.this, "Logged in successfully!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(MainActivity.this, SeeDatabaseActivity.class);
+                            Intent intent = new Intent(MainActivity.this, MainPageRecycler.class);
                             startActivityForResult(intent, 1000);
                         } else {
                             Toast.makeText(MainActivity.this, "Please Try Again!", Toast.LENGTH_SHORT).show();
@@ -115,8 +114,6 @@ public class MainActivity extends BaseActivities {
         forgotbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SeeDatabaseActivity.class);
-                startActivityForResult(intent,1000);
                 Toast.makeText(MainActivity.this,"Forgot button clicked!",Toast.LENGTH_SHORT).show();
             }
         });

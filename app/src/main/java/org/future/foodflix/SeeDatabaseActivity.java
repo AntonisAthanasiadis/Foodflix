@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import org.future.foodflix.Storage.AsynchTasks.ReadDb;
@@ -17,8 +18,9 @@ import org.future.foodflix.Storage.Database.User;
 
 import java.util.List;
 
-public class SeeDatabaseActivity extends AppCompatActivity {
 
+public class SeeDatabaseActivity extends AppCompatActivity {
+    private int i = 0;
     @Nullable
     private DatabaseSchema db;
     @Override
@@ -38,7 +40,7 @@ public class SeeDatabaseActivity extends AppCompatActivity {
                 new ReadDb(db, new ReadDb.Listener() {
                     @Override
                     public void onResult(List<User> result) {
-                        final String[] s= {""};
+                        /*final String[] s= {""};
                         int Size = result.size();
                         int i = 0;
                         for (User u:result){
@@ -53,7 +55,28 @@ public class SeeDatabaseActivity extends AppCompatActivity {
                             S+=g+"\n";
                         }
                         TextView see = findViewById(R.id.see);
-                        see.setText(S);
+                        see.setText(S);*/
+                        TextView pname = findViewById(R.id.passName);
+                        CheckBox aCheckBox = (CheckBox) findViewById(R.id.aloneBox);
+                        aCheckBox.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if(i%2==0){
+                                    pname.setVisibility(View.VISIBLE);
+                                }
+                                else{
+                                    pname.setVisibility(View.INVISIBLE);
+                                }
+                                i++;
+                            }
+                        });
+                        TextView name = findViewById(R.id.firstName);
+                        name.setText("Your first name is " + result.get(0).getRealName());
+                        TextView lname = findViewById(R.id.lastName);
+                        lname.setText("Your last name is " +result.get(0).getSurName());
+                        TextView uname = findViewById(R.id.userName);
+                        uname.setText("Your user name is " + result.get(0).getUsername());
+                        pname.setText("Your password is " +result.get(0).getPassword());
                     }
                 }).execute();
             }

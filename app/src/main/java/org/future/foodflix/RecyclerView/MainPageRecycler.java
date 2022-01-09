@@ -3,6 +3,7 @@ package org.future.foodflix.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.future.foodflix.Network.NetWorkActivity;
 import org.future.foodflix.R;
+import org.future.foodflix.SeeDatabaseActivity;
 
 import java.util.ArrayList;
 
@@ -59,7 +61,16 @@ public class MainPageRecycler extends AppCompatActivity {
                 startActivityForResult(intent,2200);
             }
         });
+        FloatingActionButton fab2 = findViewById(R.id.profileFaButton);
+        fab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isDestroyed()||isFinishing()){
+                    return;
+                }
+                Intent intent = new Intent(MainPageRecycler.this, SeeDatabaseActivity.class);
+                startActivityForResult(intent,2200);
+            }
+        });
     }
-
-
 }

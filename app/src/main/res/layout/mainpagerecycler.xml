@@ -20,11 +20,24 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/mainrecyclerFaButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/mainrecyclerFaButton"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="52dp"
         android:src="@drawable/ic_baseline_search_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="50dp"/>
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/profileFaButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toTopOf="@+id/mainrecyclerFaButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/usersilhouette" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
