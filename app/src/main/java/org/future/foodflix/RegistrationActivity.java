@@ -4,17 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import org.future.foodflix.RecyclerView.SecondActivity;
 import org.future.foodflix.Storage.AsynchTasks.InsertDb;
 import org.future.foodflix.Storage.Database.DatabaseSchema;
 import org.future.foodflix.Storage.Database.User;
-import org.future.foodflix.Storage.StorageActions;
 
 import androidx.annotation.Nullable;
-import androidx.room.Database;
 import androidx.room.Room;
 
 import com.google.android.material.textfield.TextInputEditText;

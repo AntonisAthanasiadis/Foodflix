@@ -1,16 +1,10 @@
 package org.future.foodflix;
 
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
-
-import static java.util.Collections.emptyList;
-
 import androidx.annotation.Nullable;
-import androidx.room.Database;
 import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,13 +14,11 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
 
 import org.future.foodflix.RecyclerView.MainPageRecycler;
-import org.future.foodflix.RecyclerView.SecondActivity;
 import org.future.foodflix.Storage.AsynchTasks.LoginCheck;
 import org.future.foodflix.Storage.AsynchTasks.ReadDb;
 import org.future.foodflix.Storage.Database.DatabaseSchema;
 import org.future.foodflix.Storage.Database.User;
 
-import java.util.Collection;
 import java.util.List;
 
 
