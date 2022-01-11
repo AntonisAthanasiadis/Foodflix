@@ -114,7 +114,8 @@ public class MainActivity extends BaseActivities {
         forgotbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"Forgot button clicked!",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this,forgotActivity.class);
+                startActivityForResult(intent,2000);
             }
         });
 
@@ -144,7 +145,6 @@ public class MainActivity extends BaseActivities {
 
     @Override
     public void onBackPressed() {
-        Toast.makeText(MainActivity.this,"Forgot button clicked",Toast.LENGTH_SHORT).show();
         super.onBackPressed();
     }
 
