@@ -35,11 +35,13 @@ public class NetWorkActivity extends AppCompatActivity {
     ArrayList<ListItem> listItems = new ArrayList<ListItem>();
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_fragment);
         queue = Volley.newRequestQueue(this);
+
 
     }
 
@@ -48,6 +50,9 @@ public class NetWorkActivity extends AppCompatActivity {
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         gson = new Gson();
+
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Data Loading...");
 
         RangeSlider slider = findViewById(R.id.slider);
         SwitchCompat switchCompat = findViewById(R.id.switchWidget);
@@ -59,9 +64,14 @@ public class NetWorkActivity extends AppCompatActivity {
         });
 
         Button nwbtn = findViewById(R.id.search_button);
+
+
+
         nwbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+            progressDialog.show();
 
                 CheckBox vegetarian = findViewById(R.id.vegetarian);
                 CheckBox vegan = findViewById(R.id.vegan);
@@ -121,6 +131,7 @@ public class NetWorkActivity extends AppCompatActivity {
                             public void onResponse(String response) {
                                 jsonResponse = gson.fromJson(response, JsonResponse.class);
                                 LoadRecyclerViewData(jsonResponse);
+                                progressDialog.dismiss();
                                 //    Display the first 500 characters of the response string.
                             }
                         }, new Response.ErrorListener() {
@@ -144,6 +155,7 @@ public class NetWorkActivity extends AppCompatActivity {
                 });
 //                Toast.makeText(NetWorkActivity.this,url,Toast.LENGTH_LONG).show();
 
+
                 Intent intent = new Intent(NetWorkActivity.this, SecondActivity.class);
                 intent.putExtra("response", listItems);
                 startActivity(intent);
@@ -153,15 +165,20 @@ public class NetWorkActivity extends AppCompatActivity {
     }
 
     private void LoadRecyclerViewData(JsonResponse jsonResponse) {
-//
+
+
 
         int i ;
         for ( i=0; i < jsonResponse.getHits().size(); i++)
+
             listItems.add( new ListItem(
                     jsonResponse.getHits().get(i).getRecipe().getLabel(),
                     jsonResponse.getHits().get(i).getRecipe().getCalories(),
                     jsonResponse.getHits().get(i).getRecipe().getIngredientLines(),
                     jsonResponse.getHits().get(i).getRecipe().getImages().getSMALL().getUrl()
             ));
+
+
     }
+
 }
