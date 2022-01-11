@@ -1,8 +1,14 @@
 package org.future.foodflix.RecyclerView;
 
+import static android.app.AlarmManager.INTERVAL_DAY;
+import static android.app.AlarmManager.RTC_WAKEUP;
+
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -17,8 +23,12 @@ import org.future.foodflix.R;
 import org.future.foodflix.SeeDatabaseActivity;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainPageRecycler extends AppCompatActivity {
+    private Object AlarmManager;
+    public final String CHANNEL_ID = "1";
+
     private RecyclerView parentRecyclerView;
     private RecyclerView.Adapter ParentAdapter;
     ArrayList<ParentModel> parentModelArrayList = new ArrayList<>();
@@ -44,7 +54,19 @@ public class MainPageRecycler extends AppCompatActivity {
         parentRecyclerView.setLayoutManager(parentLayoutManager);
         parentRecyclerView.setAdapter(ParentAdapter);
         ParentAdapter.notifyDataSetChanged();
+
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 14);
+        calendar.set(Calendar.MINUTE, 58);
+        calendar.set(Calendar.SECOND, 00);
+
+        Intent i = new Intent(getApplicationContext(), NotificationReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 100, i, PendingIntent.FLAG_UPDATE_CURRENT);
+        android.app.AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.setRepeating(RTC_WAKEUP, calendar.getTimeInMillis(), INTERVAL_DAY, pendingIntent);
     }
+
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {

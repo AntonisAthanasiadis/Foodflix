@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/normalTheme">
+        <receiver android:name=".RecyclerView.NotificationReceiver"/>
         <activity
             android:name=".SeeDatabaseActivity"
             android:exported="false" />
