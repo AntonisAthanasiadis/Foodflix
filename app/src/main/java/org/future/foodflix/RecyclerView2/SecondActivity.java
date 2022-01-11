@@ -30,7 +30,7 @@ public class SecondActivity extends AppCompatActivity {
     List<ListItem> listItems = new ArrayList<>();
     JsonResponse jsonResponse;
 
-    static String response;
+
 
 
 
@@ -38,6 +38,7 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+
 
         listItems = (List<ListItem>) getIntent().getExtras().getSerializable("response");
         recyclerView = findViewById(R.id.RV1);
@@ -47,7 +48,7 @@ public class SecondActivity extends AppCompatActivity {
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
+        //progressDialog.dismiss();
     }
 
     @Override
