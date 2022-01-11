@@ -1,4 +1,4 @@
-package org.future.foodflix.RecyclerView;
+package org.future.foodflix.RecyclerView2;
 
 import android.view.View;
 import android.widget.ImageView;
