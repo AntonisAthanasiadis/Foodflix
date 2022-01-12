@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -28,7 +29,6 @@ public class ShowResultsActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     MyAdapter myAdapter;
     List<ListItem> listItems = new ArrayList<>();
-    JsonResponse jsonResponse;
     RecyclerViewClickListener listener;
 
 
@@ -40,7 +40,8 @@ public class ShowResultsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
 
 
-        listItems = (List<ListItem>) getIntent().getExtras().getSerializable("response");
+
+        listItems = (ArrayList<ListItem>) getIntent().getExtras().getSerializable("response");
         recyclerView = findViewById(R.id.RV1);
 
         setOnClickListner();
@@ -53,12 +54,17 @@ public class ShowResultsActivity extends AppCompatActivity {
     }
 
     private void setOnClickListner() {
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Data Loading...");
         listener= new RecyclerViewClickListener() {
             @Override
             public void OnClick(View v, int position) {
+                progressDialog.show();
                 Intent intent = new Intent(ShowResultsActivity.this, InfoActivity.class);
-               // intent.putExtra("Ingredients",listItems.get(position).getIngredients());
+                intent.putExtra("Ingredients",listItems.get(position).getIngredients());
                 startActivity(intent);
+
+                progressDialog.dismiss();
             }
         };
     }

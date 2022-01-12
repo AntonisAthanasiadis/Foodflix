@@ -15,6 +15,7 @@ import org.future.foodflix.R;
 import org.future.foodflix.RecyclerView_ShowSearchResults.ListItem;
 import org.future.foodflix.RecyclerView_ShowSearchResults.RecyclerViewClickListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
@@ -22,12 +23,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
 
     Context ct;
-    ListItem listItem;
+    ArrayList<String> ingredients;
 
-    public MyAdapter(Context ct, List<ListItem> listItems, RecyclerViewClickListener listener) {
+    public MyAdapter(Context ct, ArrayList<String> ingredients) {
         this.ct = ct;
-        this.listItem = listItem;
-        ;
+        this.ingredients = ingredients;
+
     }
 
 
@@ -44,13 +45,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.myIngredient.setText((position+1) + ": " + listItem.getIngredients().get(position));
+        holder.myIngredient.setText((position+1) + ": " + ingredients.get(position));
 
     }
 
     @Override
     public int getItemCount() {
-        return listItem.getIngredients().size();
+        return ingredients.size();
     }
 
 }
