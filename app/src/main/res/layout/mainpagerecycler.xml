@@ -21,17 +21,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonnotify"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Let's start on 3!"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/parent_recyclerview" />
-
-    <Button
         android:id="@+id/buttonshare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
