@@ -28,16 +28,12 @@ public class NotificationReceiver extends BroadcastReceiver {
         Notification.Builder builder = new Notification.Builder(context,CHANNEL_ID);
         Bitmap bitmapNull = null;
         builder .setLargeIcon(bmp)
-                .setContentTitle("Title")
-                .setContentText("Notification Text")
+                .setContentTitle("Off the couch, time to cook!")
+                .setContentText("Browse our recipes for the most delicious food.")
                 .setSmallIcon(R.drawable.flix1024)
                 .setPriority(Notification.PRIORITY_MAX)
                 .setStyle(new Notification.BigPictureStyle().bigPicture(bmp).bigLargeIcon(bitmapNull));
 
     NotificationManagerCompat compat = NotificationManagerCompat.from(context);
     compat.notify(1,builder.build());
-
-}
-}
-
-
+}}

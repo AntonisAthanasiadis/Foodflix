@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/Welcome"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginStart="10dp"
         android:backgroundTint="@color/black"
@@ -17,9 +17,29 @@
         android:textColor="#EAE7E7"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonnotify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Let's start on 3!"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/parent_recyclerview" />
+
+    <Button
+        android:id="@+id/buttonshare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Share It"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/profileFaButton" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/parent_recyclerview"
