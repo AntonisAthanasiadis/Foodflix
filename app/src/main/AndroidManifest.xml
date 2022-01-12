@@ -55,8 +55,6 @@
             </intent-filter>
         </activity>
 
-
-
         <activity
             android:name=".Network.NetWorkActivity"
             android:exported="true">
