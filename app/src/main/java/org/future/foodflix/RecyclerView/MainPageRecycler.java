@@ -57,8 +57,11 @@ public class MainPageRecycler extends AppCompatActivity {
 
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 14);
-        calendar.set(Calendar.MINUTE, 58);
+        if(calendar.get(Calendar.HOUR_OF_DAY) >= 18) {
+           calendar.add(Calendar.DAY_OF_YEAR, 1);
+       }
+        calendar.set(Calendar.HOUR_OF_DAY, 18);
+        calendar.set(Calendar.MINUTE, 00);
         calendar.set(Calendar.SECOND, 00);
 
         Intent i = new Intent(getApplicationContext(), NotificationReceiver.class);

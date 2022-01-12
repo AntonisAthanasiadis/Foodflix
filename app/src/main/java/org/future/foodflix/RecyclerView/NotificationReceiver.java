@@ -24,13 +24,15 @@ public class NotificationReceiver extends BroadcastReceiver {
     NotificationManager manager = (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
     NotificationChannel channel = new NotificationChannel(CHANNEL_ID,"1",NotificationManager.IMPORTANCE_HIGH);
         manager.createNotificationChannel(channel);
-        Bitmap bmp = BitmapFactory.decodeResource(Resources.getSystem(), R.drawable.flix1024);
+        Bitmap bmp = BitmapFactory.decodeResource(context.getResources(), R.drawable.flix1024);
         Notification.Builder builder = new Notification.Builder(context,CHANNEL_ID);
-        builder.setSmallIcon(R.drawable.flix1024).setContentTitle("Title")
+        Bitmap bitmapNull = null;
+        builder .setLargeIcon(bmp)
+                .setContentTitle("Title")
                 .setContentText("Notification Text")
+                .setSmallIcon(R.drawable.flix1024)
                 .setPriority(Notification.PRIORITY_MAX)
-                .setLargeIcon(bmp)
-                .setStyle(new Notification.BigPictureStyle().bigPicture(bmp));
+                .setStyle(new Notification.BigPictureStyle().bigPicture(bmp).bigLargeIcon(bitmapNull));
 
     NotificationManagerCompat compat = NotificationManagerCompat.from(context);
     compat.notify(1,builder.build());
