@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-import org.future.foodflix.RecyclerView.MainPageRecycler;
+import org.future.foodflix.RecyclerView_MainPage.MainPageRecycler;
 import org.future.foodflix.Storage.AsynchTasks.LoginCheck;
 import org.future.foodflix.Storage.AsynchTasks.ReadDb;
 import org.future.foodflix.Storage.Database.DatabaseSchema;

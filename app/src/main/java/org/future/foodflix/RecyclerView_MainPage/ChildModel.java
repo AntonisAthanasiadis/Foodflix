@@ -1,4 +1,4 @@
-package org.future.foodflix.RecyclerView;
+package org.future.foodflix.RecyclerView_MainPage;
 
 public class ChildModel {
     private int image_view2;

@@ -1,4 +1,4 @@
-package org.future.foodflix.RecyclerView;
+package org.future.foodflix.RecyclerView_MainPage;
 
 import android.content.Context;
 import android.view.LayoutInflater;

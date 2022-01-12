@@ -3,7 +3,6 @@ package org.future.foodflix.Network;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.*;
 
@@ -21,11 +20,10 @@ import com.google.gson.Gson;
 import org.future.foodflix.CheckActions;
 import org.future.foodflix.Network.JsonResponse.JsonResponse;
 import org.future.foodflix.R;
-import org.future.foodflix.RecyclerView2.ListItem;
-import org.future.foodflix.RecyclerView2.SecondActivity;
+import org.future.foodflix.RecyclerView_ShowSearchResults.ListItem;
+import org.future.foodflix.RecyclerView_ShowSearchResults.ShowResultsActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class NetWorkActivity extends AppCompatActivity {
 
@@ -131,6 +129,11 @@ public class NetWorkActivity extends AppCompatActivity {
                             public void onResponse(String response) {
                                 jsonResponse = gson.fromJson(response, JsonResponse.class);
                                 LoadRecyclerViewData(jsonResponse);
+
+                                Intent intent = new Intent(NetWorkActivity.this, ShowResultsActivity.class);
+                                intent.putExtra("response", listItems);
+                                startActivity(intent);
+
                                 progressDialog.dismiss();
                                 //    Display the first 500 characters of the response string.
                             }
@@ -156,9 +159,6 @@ public class NetWorkActivity extends AppCompatActivity {
 //                Toast.makeText(NetWorkActivity.this,url,Toast.LENGTH_LONG).show();
 
 
-                Intent intent = new Intent(NetWorkActivity.this, SecondActivity.class);
-                intent.putExtra("response", listItems);
-                startActivity(intent);
 
             }
         });
@@ -166,7 +166,7 @@ public class NetWorkActivity extends AppCompatActivity {
 
     private void LoadRecyclerViewData(JsonResponse jsonResponse) {
 
-
+        listItems.clear();
 
         int i ;
         for ( i=0; i < jsonResponse.getHits().size(); i++)

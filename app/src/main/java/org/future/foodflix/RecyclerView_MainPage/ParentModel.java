@@ -1,4 +1,4 @@
-package org.future.foodflix.RecyclerView;
+package org.future.foodflix.RecyclerView_MainPage;
 
 public class ParentModel {
     private String foodCategory;

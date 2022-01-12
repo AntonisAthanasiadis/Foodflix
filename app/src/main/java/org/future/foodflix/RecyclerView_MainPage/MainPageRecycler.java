@@ -1,9 +1,8 @@
-package org.future.foodflix.RecyclerView;
+package org.future.foodflix.RecyclerView_MainPage;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,7 +39,7 @@ public class MainPageRecycler extends AppCompatActivity {
         parentRecyclerView = findViewById(R.id.parent_recyclerview);
         parentRecyclerView.setHasFixedSize(true);
         parentLayoutManager = new LinearLayoutManager(this);
-        ParentAdapter = new ParentRecyclerViewAdapter(parentModelArrayList, org.future.foodflix.RecyclerView.MainPageRecycler.this);
+        ParentAdapter = new ParentRecyclerViewAdapter(parentModelArrayList, org.future.foodflix.RecyclerView_MainPage.MainPageRecycler.this);
         parentRecyclerView.setLayoutManager(parentLayoutManager);
         parentRecyclerView.setAdapter(ParentAdapter);
         ParentAdapter.notifyDataSetChanged();

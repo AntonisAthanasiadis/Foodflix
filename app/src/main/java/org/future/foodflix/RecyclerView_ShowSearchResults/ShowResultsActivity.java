@@ -1,4 +1,4 @@
-package org.future.foodflix.RecyclerView2;
+package org.future.foodflix.RecyclerView_ShowSearchResults;
 
 
 import androidx.annotation.Nullable;
@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,11 +16,12 @@ import com.google.gson.Gson;
 import org.future.foodflix.Network.NetWorkActivity;
 import org.future.foodflix.R;
 import org.future.foodflix.Network.JsonResponse.JsonResponse;
+import org.future.foodflix.RecyclerViewInfo.InfoActivity;
 
 
 import java.util.*;
 
-public class SecondActivity extends AppCompatActivity {
+public class ShowResultsActivity extends AppCompatActivity {
 
     private Gson gson = new Gson();
 
@@ -29,7 +29,7 @@ public class SecondActivity extends AppCompatActivity {
     MyAdapter myAdapter;
     List<ListItem> listItems = new ArrayList<>();
     JsonResponse jsonResponse;
-
+    RecyclerViewClickListener listener;
 
 
 
@@ -43,12 +43,24 @@ public class SecondActivity extends AppCompatActivity {
         listItems = (List<ListItem>) getIntent().getExtras().getSerializable("response");
         recyclerView = findViewById(R.id.RV1);
 
-        myAdapter = new MyAdapter(this,listItems);
+        setOnClickListner();
+        myAdapter = new MyAdapter(this,listItems,listener);
 
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //progressDialog.dismiss();
+    }
+
+    private void setOnClickListner() {
+        listener= new RecyclerViewClickListener() {
+            @Override
+            public void OnClick(View v, int position) {
+                Intent intent = new Intent(ShowResultsActivity.this, InfoActivity.class);
+               // intent.putExtra("Ingredients",listItems.get(position).getIngredients());
+                startActivity(intent);
+            }
+        };
     }
 
     @Override
@@ -59,24 +71,14 @@ public class SecondActivity extends AppCompatActivity {
 
 
        // LoadRecyclerViewData(jsonResponse);
-        ImageView imageView =findViewById(R.id.recyclerbackbtn);
+        ImageView imageView =findViewById(R.id.recyclerbackbtn1);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
-        Button toNetworkActivity = findViewById(R.id.Rbtn1);
-        toNetworkActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isDestroyed()||isFinishing()){
-                    return;
-                }
-                Intent intent = new Intent(SecondActivity.this, NetWorkActivity.class);
-                startActivityForResult(intent,2000);
-            }
-        });
+
 
         FloatingActionButton fab = findViewById(R.id.faButton);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +87,7 @@ public class SecondActivity extends AppCompatActivity {
                 if (isDestroyed()||isFinishing()){
                     return;
                 }
-                Intent intent = new Intent(SecondActivity.this, NetWorkActivity.class);
+                Intent intent = new Intent(ShowResultsActivity.this, NetWorkActivity.class);
                 startActivityForResult(intent,2000);
             }
         });

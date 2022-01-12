@@ -29,14 +29,14 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".RecyclerView2.SecondActivity"
+            android:name=".RecyclerView_ShowSearchResults.ShowResultsActivity"
             android:exported="false" />
 
         <activity
             android:name=".forgotActivity"
             android:exported="false" />
 
-        <activity android:name=".RecyclerView.MainPageRecycler"
+        <activity android:name=".RecyclerView_MainPage.MainPageRecycler"
             android:exported="true"/>
 
         <activity

@@ -1,9 +1,10 @@
-package org.future.foodflix.RecyclerView2;
+package org.future.foodflix.RecyclerViewInfo;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,19 +12,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import org.future.foodflix.R;
+import org.future.foodflix.RecyclerView_ShowSearchResults.ListItem;
+import org.future.foodflix.RecyclerView_ShowSearchResults.RecyclerViewClickListener;
 
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
 
-    Context ct;
-    List<ListItem> listItems;
 
-    public MyAdapter(Context ct, List<ListItem> listItems) {
+    Context ct;
+    ListItem listItem;
+
+    public MyAdapter(Context ct, List<ListItem> listItems, RecyclerViewClickListener listener) {
         this.ct = ct;
-        this.listItems = listItems;
+        this.listItem = listItem;
+        ;
     }
+
 
 
 
@@ -32,24 +38,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(ct);
-        View view = inflater.inflate(R.layout.my_row,parent,false);
+        View view = inflater.inflate(R.layout.ingredient,parent,false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.myTitle.setText(listItems.get(position).getTitle());
-        holder.myDesc.setText("" +listItems.get(position).getCalories());
-
-        Picasso.with(ct)
-                .load(listItems.get(position).getImageURL())
-                .into(holder.myImage);
-
+        holder.myIngredient.setText((position+1) + ": " + listItem.getIngredients().get(position));
 
     }
 
     @Override
     public int getItemCount() {
-        return listItems.size();
+        return listItem.getIngredients().size();
     }
+
 }

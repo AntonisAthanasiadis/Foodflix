@@ -1,6 +1,4 @@
-package org.future.foodflix.RecyclerView2;
-
-import android.os.Parcelable;
+package org.future.foodflix.RecyclerView_ShowSearchResults;
 
 import java.io.Serializable;
 import java.util.List;
