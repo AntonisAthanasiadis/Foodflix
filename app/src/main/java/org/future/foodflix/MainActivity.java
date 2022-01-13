@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
 
 import org.future.foodflix.RecyclerView_MainPage.MainPageActivity;
-import org.future.foodflix.Unused.Unused_RecyclerView.MainPageRecycler;
+
 import org.future.foodflix.Storage.AsynchTasks.LoginCheck;
 import org.future.foodflix.Storage.AsynchTasks.ReadDb;
 import org.future.foodflix.Storage.Database.DatabaseSchema;

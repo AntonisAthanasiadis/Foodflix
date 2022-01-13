@@ -1,10 +1,7 @@
-package org.future.foodflix.RecyclerView;
+package org.future.foodflix.Unused.Unused_RecyclerView;
 
 import static android.app.AlarmManager.INTERVAL_DAY;
 import static android.app.AlarmManager.RTC_WAKEUP;
-
-import android.content.ContentProvider;
-import android.content.Context;
 
 import android.app.AlarmManager;
 import android.app.Notification;
@@ -12,13 +9,10 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -31,9 +25,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.future.foodflix.Network.NetWorkActivity;
 import org.future.foodflix.R;
+import org.future.foodflix.RecyclerView_MainPage.NotificationReceiver;
 import org.future.foodflix.SeeDatabaseActivity;
 
-import java.net.ContentHandler;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -65,7 +59,7 @@ public class MainPageRecycler extends AppCompatActivity {
         parentRecyclerView = findViewById(R.id.parent_recyclerview);
         parentRecyclerView.setHasFixedSize(true);
         parentLayoutManager = new LinearLayoutManager(this);
-        ParentAdapter = new ParentRecyclerViewAdapter(parentModelArrayList, org.future.foodflix.RecyclerView.MainPageRecycler.this);
+        ParentAdapter = new ParentRecyclerViewAdapter(parentModelArrayList, MainPageRecycler.this);
         parentRecyclerView.setLayoutManager(parentLayoutManager);
         parentRecyclerView.setAdapter(ParentAdapter);
         ParentAdapter.notifyDataSetChanged();

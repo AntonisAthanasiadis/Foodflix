@@ -1,8 +1,12 @@
 package org.future.foodflix.RecyclerView_MainPage;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.android.volley.Request;
@@ -16,12 +20,15 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.PersistableBundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +46,7 @@ import org.future.foodflix.SeeDatabaseActivity;
 import org.future.foodflix.Unused.Unused_RecyclerView.MainPageRecycler;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
@@ -49,8 +57,8 @@ public class MainPageActivity extends AppCompatActivity {
     String[] randomFoods = {"chicken", "pizza","pasta"};
     Random rand = new Random();
     String randomFood = randomFoods[rand.nextInt(randomFoods.length)];
-
-
+    Button buttonshare;
+    public final String CHANNEL_ID2 = "2";
 
     String url = "https://api.edamam.com/api/recipes/v2?" +
             "type=public" +
@@ -90,6 +98,30 @@ public class MainPageActivity extends AppCompatActivity {
         setOnClickListener();
 
 
+
+
+
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 18);
+        calendar.set(Calendar.MINUTE, 00);
+        calendar.set(Calendar.SECOND, 00);
+
+
+
+
+        buttonshare = (Button) findViewById(R.id.buttonshare);
+        buttonshare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(Intent.ACTION_SEND);
+                myIntent.setType("text/plain");
+                String shareBody ="https://www.facebook.com/Edamam/" ;
+                myIntent.putExtra(Intent.EXTRA_SUBJECT, shareBody);
+                myIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(myIntent, "Share using"));
+            }
+        });
     }
 
     @Override
@@ -154,6 +186,19 @@ public class MainPageActivity extends AppCompatActivity {
                 }
                 Intent intent = new Intent(MainPageActivity.this, SeeDatabaseActivity.class);
                 startActivityForResult(intent,2200);
+
+                startNotification2();
+            }
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            public void startNotification2(){
+                NotificationChannel channel2 = new NotificationChannel(CHANNEL_ID2,"2", NotificationManager.IMPORTANCE_DEFAULT);
+                NotificationManager manager2 = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+                manager2.createNotificationChannel(channel2);
+                Notification.Builder builder2 = new Notification.Builder(MainPageActivity.this,CHANNEL_ID2);
+                builder2.setSmallIcon(R.drawable.flix1024).setContentTitle("The presentation has started.")
+                        .setPriority(Notification.PRIORITY_DEFAULT);
+                NotificationManagerCompat compat2 = NotificationManagerCompat.from(MainPageActivity.this);
+                compat2.notify(2,builder2.build());
             }
         });
 

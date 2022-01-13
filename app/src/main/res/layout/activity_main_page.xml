@@ -89,6 +89,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/usersilhouette" />
 
+    <Button
+        android:id="@+id/buttonshare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Share It"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mainrecyclerFaButton"
+        app:layout_constraintRight_toRightOf="parent"/>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/mainrecyclerFaButton"
         android:layout_width="wrap_content"
