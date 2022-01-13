@@ -1,31 +1,26 @@
-package org.future.foodflix.RecyclerViewInfo;
+package org.future.foodflix.RecyclerView_ShowInfo;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.ImageView;
 
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.google.gson.Gson;
-
-import org.future.foodflix.Network.JsonResponse.JsonResponse;
 import org.future.foodflix.R;
-import org.future.foodflix.RecyclerView_ShowSearchResults.ListItem;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class InfoActivity extends AppCompatActivity {
 
-    private Gson gson = new Gson();
-
     RecyclerView recyclerView;
     MyAdapter myAdapter;
-    List<String> ingredients = new ArrayList<>();
+    ArrayList<String> ingredients = new ArrayList<>();
 
 
 
@@ -34,14 +29,28 @@ public class InfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredients);
 
-
-       // ingredients =  getIntent().getExtras().getSerializableExtra("Ingredients");
+        ImageView backbtn =findViewById(R.id.recyclerbackbtn2);
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+       ingredients = (ArrayList<String>) getIntent().getSerializableExtra("Ingredients");
         recyclerView = findViewById(R.id.RV2);
 
-       // myAdapter = new MyAdapter(this,listItems);
+       myAdapter = new MyAdapter(this,ingredients);
 
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+
+    }
+
+    @Override
+    public void onPostCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onPostCreate(savedInstanceState, persistentState);
 
         ImageView imageView =findViewById(R.id.recyclerbackbtn2);
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -50,10 +59,9 @@ public class InfoActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
     }
 
-//        setOnClickListener(new View.OnClickListener() {
+    //        setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)

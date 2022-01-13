@@ -1,6 +1,7 @@
 package org.future.foodflix.RecyclerView_ShowSearchResults;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -11,7 +12,8 @@ import lombok.Getter;
 public class ListItem implements Serializable {
     private String Title;
     private float calories;
-    private List<String> ingredients;
+    private ArrayList<String> ingredients;
     private String imageURL;
+
 
 }

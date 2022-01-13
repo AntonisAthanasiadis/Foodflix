@@ -7,6 +7,19 @@
     android:background="@color/black"
     tools:context=".RegistrationActivity">
 
+    <ImageView
+        android:id="@+id/regbackbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/dRed"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:src="@drawable/ic_round_arrow_back_ios_24"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/Register"
         android:layout_width="wrap_content"

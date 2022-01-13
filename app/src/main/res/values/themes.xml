@@ -13,6 +13,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
     <style name="normalTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="normalTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
@@ -23,5 +24,10 @@
         <item name="colorPrimaryDark">@color/dRed</item>
         <item name="colorAccent">@color/white</item>
         <item name="android:statusBarColor">@color/lRed</item>
+    </style>
+
+    <style name="normalTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 </resources>

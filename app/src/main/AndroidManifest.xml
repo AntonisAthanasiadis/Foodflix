@@ -11,19 +11,26 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/normalTheme">
+        <receiver android:name=".RecyclerView_MainPage.NotificationReceiver"/>
+        <activity
+            android:name=".OnErrorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RecyclerView_MainPage.MainPageActivity"
+            android:exported="false"
+            android:label="@string/title_activity_main_page"
+            android:theme="@style/normalTheme.NoActionBar" />
         <activity
             android:name=".SeeDatabaseActivity"
             android:exported="false" />
-
         <activity
-            android:name=".NavigationDrawerActivity"
+            android:name=".Unused.NavigationDrawerActivity"
             android:exported="true"
             android:label="@string/title_activity_navigation_drawer"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-
-        </activity>
-
-
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".RecyclerView_ShowInfo.InfoActivity"
+            android:exported="true" />
         <activity
             android:name=".RegistrationActivity"
             android:exported="false"
@@ -31,30 +38,26 @@
         <activity
             android:name=".RecyclerView_ShowSearchResults.ShowResultsActivity"
             android:exported="false" />
-
         <activity
             android:name=".forgotActivity"
             android:exported="false" />
-
-        <activity android:name=".RecyclerView_MainPage.MainPageRecycler"
-            android:exported="true"/>
-
+        <activity
+            android:name=".Unused.Unused_RecyclerView.MainPageRecycler"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize" >
-
-        </activity>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Network.NetWorkActivity"
             android:exported="true">

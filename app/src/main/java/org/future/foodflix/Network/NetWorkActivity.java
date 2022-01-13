@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 
 import org.future.foodflix.CheckActions;
 import org.future.foodflix.Network.JsonResponse.JsonResponse;
+import org.future.foodflix.OnErrorActivity;
 import org.future.foodflix.R;
 import org.future.foodflix.RecyclerView_ShowSearchResults.ListItem;
 import org.future.foodflix.RecyclerView_ShowSearchResults.ShowResultsActivity;
@@ -60,16 +61,19 @@ public class NetWorkActivity extends AppCompatActivity {
                 CheckActions.switchCompatCheckedUI((SwitchCompat) buttonView,slider);
             }
         });
-
+        ImageView imageView = findViewById(R.id.searchbackbtn);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         Button nwbtn = findViewById(R.id.search_button);
-
-
-
         nwbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.show();
 
-            progressDialog.show();
 
                 CheckBox vegetarian = findViewById(R.id.vegetarian);
                 CheckBox vegan = findViewById(R.id.vegan);
@@ -121,45 +125,42 @@ public class NetWorkActivity extends AppCompatActivity {
                         "&app_id=85236044&app_key=d2448eb147c0c48689ed8a40d9c107de";
 
                 url=CheckActions.ingrCheck(url,ingr,diet,health,calories);
+//                Toast.makeText(NetWorkActivity.this, "URL\n"+ url,Toast.LENGTH_LONG).show();
 
                 //    Request a string response from the provided URL.
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
+
                                 jsonResponse = gson.fromJson(response, JsonResponse.class);
                                 LoadRecyclerViewData(jsonResponse);
+
+                                if(listItems.isEmpty()) {
+                                    Intent intent = new Intent(NetWorkActivity.this, OnErrorActivity.class);
+                                    startActivity(intent);
+                                    progressDialog.dismiss();
+                                }
+                            else{
 
                                 Intent intent = new Intent(NetWorkActivity.this, ShowResultsActivity.class);
                                 intent.putExtra("response", listItems);
                                 startActivity(intent);
 
-                                progressDialog.dismiss();
+                                progressDialog.dismiss();}
                                 //    Display the first 500 characters of the response string.
                             }
                         }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(NetWorkActivity.this, "An error occured:\n"+ error.getMessage(),Toast.LENGTH_LONG).show();
 
+                        Intent intent = new Intent(NetWorkActivity.this, OnErrorActivity.class);
+                        startActivity(intent);
                     }
                 });
 
                 //   Add the request to the RequestQueue.
                 queue.add(stringRequest);
-
-
-                ImageView imageView = findViewById(R.id.searchbackbtn);
-                imageView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        onBackPressed();
-                    }
-                });
-//                Toast.makeText(NetWorkActivity.this,url,Toast.LENGTH_LONG).show();
-
-
-
             }
         });
     }
@@ -174,7 +175,7 @@ public class NetWorkActivity extends AppCompatActivity {
             listItems.add( new ListItem(
                     jsonResponse.getHits().get(i).getRecipe().getLabel(),
                     jsonResponse.getHits().get(i).getRecipe().getCalories(),
-                    jsonResponse.getHits().get(i).getRecipe().getIngredientLines(),
+                   jsonResponse.getHits().get(i).getRecipe().getIngredientLines(),
                     jsonResponse.getHits().get(i).getRecipe().getImages().getSMALL().getUrl()
             ));
 

@@ -1,4 +1,4 @@
-package org.future.foodflix.RecyclerViewInfo;
+package org.future.foodflix.RecyclerView_ShowInfo;
 
 
 import android.view.View;

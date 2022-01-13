@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OnErrorActivity"
+    android:background="@color/black">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="100sp"
+        android:text="Oh no! It seems like your search did not return any results.
+Grab a toast or search again!"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/mainrecyclerFaButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="52dp"
+        app:layout_constraintLeft_toRightOf="@id/makeToast"
+        android:src="@drawable/ic_baseline_search_24"
+        app:layout_constraintTop_toBottomOf="@id/textView"
+
+        app:layout_constraintRight_toRightOf="parent" />
+    <Button
+        android:id="@+id/makeToast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Toast!"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintRight_toLeftOf="@id/mainrecyclerFaButton"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

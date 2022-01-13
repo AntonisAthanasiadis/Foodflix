@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Data;
@@ -16,7 +17,7 @@ public class RecipeResponse implements Serializable {
     private String label;
     private ImagesResponse images;
     private float calories;
-    private List<String> ingredientLines;
+    private ArrayList<String> ingredientLines;
 
 
     @Override

@@ -12,11 +12,12 @@
         android:id="@+id/searchbackbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="4dp"
+        android:foregroundGravity="center"
+
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/dRed"
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
         android:src="@drawable/ic_round_arrow_back_ios_24"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -43,10 +44,10 @@
         app:boxCornerRadiusBottomStart="35dp"
         app:boxCornerRadiusTopEnd="35dp"
         app:boxCornerRadiusTopStart="35dp"
+        app:layout_constraintBottom_toTopOf="@id/diet"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fragTxt"
-        app:layout_constraintBottom_toTopOf="@id/diet"
         app:startIconDrawable="@drawable/ic_baseline_search_24">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -81,12 +82,13 @@
         android:id="@+id/diet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Diet"
-        android:textColor="@color/white"
+        android:text="Choose Diet Type"
+        android:textColor="@color/lRed"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/balanced"
-        app:layout_constraintLeft_toRightOf="@id/guidelineF"
-        app:layout_constraintRight_toLeftOf="@id/guideline"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+
         app:layout_constraintTop_toBottomOf="@id/guidelineH1" />
 
     <CheckBox
@@ -94,10 +96,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="balance"
+
         android:textColor="@color/white"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@id/high_protein"
-        app:layout_constraintLeft_toRightOf="@id/guidelineF"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineF"
         app:layout_constraintTop_toBottomOf="@id/diet" />
 
     <CheckBox
@@ -107,9 +110,9 @@
         android:text="high-protein"
         android:textColor="@color/white"
         android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@id/low_fat"
         app:layout_constraintLeft_toRightOf="@id/guidelineF"
-        app:layout_constraintTop_toBottomOf="@id/balanced"
-        app:layout_constraintBottom_toTopOf="@id/low_fat"/>
+        app:layout_constraintTop_toBottomOf="@id/balanced" />
 
     <CheckBox
         android:id="@+id/low_fat"
@@ -129,21 +132,10 @@
         android:text="low-carb"
         android:textColor="@color/white"
         android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@id/guidelineH"
         app:layout_constraintLeft_toRightOf="@id/guidelineF"
-        app:layout_constraintTop_toBottomOf="@id/low_fat"
-        app:layout_constraintBottom_toTopOf="@id/guidelineH"/>
+        app:layout_constraintTop_toBottomOf="@id/low_fat" />
 
-    <TextView
-        android:id="@+id/health"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Health"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/vegetarian"
-        app:layout_constraintLeft_toRightOf="@id/guideline"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guidelineH1" />
 
     <CheckBox
         android:id="@+id/vegetarian"
@@ -154,7 +146,7 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@id/vegan"
         app:layout_constraintLeft_toRightOf="@id/guideline"
-        app:layout_constraintTop_toBottomOf="@id/health" />
+        app:layout_constraintTop_toBottomOf="@+id/diet" />
 
     <CheckBox
         android:id="@+id/vegan"
@@ -170,13 +162,16 @@
 
     <CheckBox
         android:id="@+id/immunosupportive"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="8dp"
+
+        android:foregroundGravity="left"
+        android:gravity="center"
         android:text="immuno-supportive"
         android:textColor="@color/white"
-        android:textSize="15sp"
+        android:textSize="13sp"
         app:layout_constraintBottom_toTopOf="@id/gluten"
+
         app:layout_constraintLeft_toRightOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/vegan" />
 
@@ -208,41 +203,48 @@
         app:layout_constraintGuide_percent="0.76" />
 
     <androidx.appcompat.widget.SwitchCompat
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/switchWidget"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginRight="15dp"
+        android:checked="true"
         android:textOff="OFF"
         android:textOn="ON"
-        app:layout_constraintTop_toBottomOf="@id/guidelineH2"
         app:layout_constraintBottom_toTopOf="@id/search_button"
-        app:layout_constraintLeft_toRightOf="@id/slider"
-        app:layout_constraintRight_toRightOf="parent"
-        android:checked="true"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/slider"
+        app:layout_constraintTop_toBottomOf="@id/guidelineH2" />
+
     <TextView
         android:id="@+id/calories"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Calories"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="18sp"
 
-        app:layout_constraintLeft_toLeftOf="@id/guidelineF"
-        app:layout_constraintRight_toLeftOf="@id/slider"
+        app:layout_constraintBottom_toTopOf="@id/search_button"
+        app:layout_constraintEnd_toStartOf="@+id/slider"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guidelineH2"
-        app:layout_constraintBottom_toTopOf="@id/search_button"/>
+        app:layout_constraintVertical_bias="0.494" />
 
     <com.google.android.material.slider.RangeSlider
         android:id="@+id/slider"
-        android:layout_width="200dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+
         android:tooltipText="Calories"
         android:valueFrom="0"
         android:valueTo="4000"
         app:layout_constraintBottom_toTopOf="@id/search_button"
-        app:layout_constraintLeft_toRightOf="@id/calories"
-        app:layout_constraintRight_toLeftOf="@id/switchWidget"
+        app:layout_constraintEnd_toStartOf="@+id/switchWidget"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/calories"
         app:layout_constraintTop_toBottomOf="@id/guidelineH2"
         app:values="@array/initial_values" />
 
@@ -250,7 +252,7 @@
         android:id="@+id/ingredients"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Igredients"
+        android:text="Ingredients"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/guidelineH2"
@@ -279,16 +281,16 @@
             android:layout_height="wrap_content"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <Button
+        android:id="@+id/search_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/search_button"
         android:text="@string/Searchbtn"
-        app:layout_constraintTop_toBottomOf="@id/slider"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
+        app:layout_constraintTop_toBottomOf="@id/slider" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
