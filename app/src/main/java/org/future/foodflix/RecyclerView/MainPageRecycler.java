@@ -3,6 +3,7 @@ package org.future.foodflix.RecyclerView;
 import static android.app.AlarmManager.INTERVAL_DAY;
 import static android.app.AlarmManager.RTC_WAKEUP;
 
+import android.annotation.SuppressLint;
 import android.content.ContentProvider;
 import android.content.Context;
 import android.app.AlarmManager;
@@ -97,6 +98,17 @@ public class MainPageRecycler extends AppCompatActivity {
                 Intent intent = new Intent(MainPageRecycler.this, SeeDatabaseActivity.class);
                 startActivityForResult(intent,2200);
             }
-        }); }
-
-}
+        });
+        buttonshare = (Button) findViewById(R.id.buttonshare);
+        buttonshare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(Intent.ACTION_SEND);
+                myIntent.setType("text/plain");
+                String shareBody = "https://www.facebook.com/Edamam/";
+                String shareSub = "Your subject";
+                myIntent.putExtra(Intent.EXTRA_SUBJECT, shareBody);
+                myIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(myIntent, "Share using"));
+            }
+        });}}
