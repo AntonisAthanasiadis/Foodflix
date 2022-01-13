@@ -195,7 +195,7 @@ public class MainPageActivity extends AppCompatActivity {
                 NotificationManager manager2 = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
                 manager2.createNotificationChannel(channel2);
                 Notification.Builder builder2 = new Notification.Builder(MainPageActivity.this,CHANNEL_ID2);
-                builder2.setSmallIcon(R.drawable.flix1024).setContentTitle("The presentation has started.")
+                builder2.setSmallIcon(R.drawable.flix1024).setContentTitle("Never gonna give you up....")
                         .setPriority(Notification.PRIORITY_DEFAULT);
                 NotificationManagerCompat compat2 = NotificationManagerCompat.from(MainPageActivity.this);
                 compat2.notify(2,builder2.build());
