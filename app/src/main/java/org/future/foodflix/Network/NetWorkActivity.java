@@ -139,6 +139,7 @@ public class NetWorkActivity extends AppCompatActivity {
                                 if(listItems.isEmpty()) {
                                     Intent intent = new Intent(NetWorkActivity.this, OnErrorActivity.class);
                                     startActivity(intent);
+                                    progressDialog.dismiss();
                                 }
                             else{
 
