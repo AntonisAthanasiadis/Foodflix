@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/normalTheme">
-        <receiver android:name=".RecyclerView.NotificationReceiver"/>
+        <receiver android:name=".RecyclerView_MainPage.NotificationReceiver"/>
         <activity
             android:name=".OnErrorActivity"
             android:exported="false" />
@@ -61,11 +61,6 @@
         <activity
             android:name=".Network.NetWorkActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
