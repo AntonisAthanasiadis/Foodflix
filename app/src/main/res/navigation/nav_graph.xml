@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="org.future.foodflix.RecyclerViewInfo.FirstFragment"
+        android:name="org.future.foodflix.RecyclerView_ShowInfo.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="org.future.foodflix.RecyclerViewInfo.SecondFragment"
+        android:name="org.future.foodflix.RecyclerView_ShowInfo.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
 

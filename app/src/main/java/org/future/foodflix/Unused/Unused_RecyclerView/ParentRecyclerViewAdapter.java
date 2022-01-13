@@ -1,4 +1,4 @@
-package org.future.foodflix.RecyclerView_MainPage;
+package org.future.foodflix.Unused.Unused_RecyclerView;
 
 import android.widget.TextView;
 import android.content.Context;

@@ -1,22 +1,16 @@
-package org.future.foodflix.RecyclerViewInfo;
+package org.future.foodflix.RecyclerView_ShowInfo;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
-
 import org.future.foodflix.R;
-import org.future.foodflix.RecyclerView_ShowSearchResults.ListItem;
-import org.future.foodflix.RecyclerView_ShowSearchResults.RecyclerViewClickListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
@@ -45,7 +39,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.myIngredient.setText((position+1) + ": " + ingredients.get(position));
+        holder.myIngredient.setText(ingredients.get(position));
 
     }
 

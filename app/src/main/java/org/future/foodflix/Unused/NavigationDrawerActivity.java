@@ -1,4 +1,4 @@
-package org.future.foodflix;
+package org.future.foodflix.Unused;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +13,8 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+
+import org.future.foodflix.R;
 
 public class NavigationDrawerActivity extends AppCompatActivity {
 

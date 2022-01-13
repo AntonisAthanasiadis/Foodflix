@@ -16,8 +16,7 @@ import com.google.gson.Gson;
 
 import org.future.foodflix.Network.NetWorkActivity;
 import org.future.foodflix.R;
-import org.future.foodflix.Network.JsonResponse.JsonResponse;
-import org.future.foodflix.RecyclerViewInfo.InfoActivity;
+import org.future.foodflix.RecyclerView_ShowInfo.InfoActivity;
 
 
 import java.util.*;

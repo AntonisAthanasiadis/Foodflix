@@ -3,6 +3,7 @@ package org.future.foodflix;
 import androidx.annotation.Nullable;
 import androidx.room.Room;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.view.View;
@@ -13,7 +14,8 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-import org.future.foodflix.RecyclerView_MainPage.MainPageRecycler;
+import org.future.foodflix.RecyclerView_MainPage.MainPageActivity;
+import org.future.foodflix.Unused.Unused_RecyclerView.MainPageRecycler;
 import org.future.foodflix.Storage.AsynchTasks.LoginCheck;
 import org.future.foodflix.Storage.AsynchTasks.ReadDb;
 import org.future.foodflix.Storage.Database.DatabaseSchema;
@@ -32,6 +34,9 @@ public class MainActivity extends BaseActivities {
 
     @Override
     public void useUIElements() {
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Data Loading...");
+
         ImageView imageView =findViewById(R.id.backbtn);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +81,7 @@ public class MainActivity extends BaseActivities {
                         Toast.makeText(MainActivity.this,String.valueOf(result),Toast.LENGTH_SHORT).show();
                         if (result) {
                             Toast.makeText(MainActivity.this, "Logged in successfully!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(MainActivity.this, MainPageRecycler.class);
+                            Intent intent = new Intent(MainActivity.this, MainPageActivity.class);
                             startActivityForResult(intent, 1000);
                         } else {
                             Toast.makeText(MainActivity.this, "Please Try Again!", Toast.LENGTH_SHORT).show();
@@ -93,11 +98,12 @@ public class MainActivity extends BaseActivities {
                 if (isDestroyed()||isFinishing()){
                     return;
                 }
-                Toast.makeText(MainActivity.this,"Logged in as guest!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainActivity.this, MainPageRecycler.class);
+                progressDialog.show();
+                //Toast.makeText(MainActivity.this,"Logged in as guest!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, MainPageActivity.class);
                 startActivity(intent);
                 startActivityForResult(intent,1000);
-
+                progressDialog.dismiss();
             }
         });
 

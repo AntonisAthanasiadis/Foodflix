@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import org.future.foodflix.RecyclerView_MainPage.MainPageActivity;
 import org.future.foodflix.Storage.AsynchTasks.InsertDb;
 import org.future.foodflix.Storage.Database.DatabaseSchema;
 import org.future.foodflix.Storage.Database.User;
@@ -70,7 +71,7 @@ public class RegistrationActivity extends BaseActivities {
                             Toast.makeText(RegistrationActivity.this, "Data inserted!!! " + result, Toast.LENGTH_SHORT).show();
                         }
                     }).execute(new User(newUser,firstName,lastName,pass1));
-                    Intent intent = new Intent(RegistrationActivity.this, SeeDatabaseActivity.class);
+                    Intent intent = new Intent(RegistrationActivity.this, MainPageActivity.class);
                     startActivityForResult(intent, 1000);
                 }
 

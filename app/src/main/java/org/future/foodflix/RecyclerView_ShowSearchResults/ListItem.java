@@ -15,4 +15,5 @@ public class ListItem implements Serializable {
     private ArrayList<String> ingredients;
     private String imageURL;
 
+
 }

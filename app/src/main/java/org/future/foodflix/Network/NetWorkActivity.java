@@ -174,7 +174,7 @@ public class NetWorkActivity extends AppCompatActivity {
             listItems.add( new ListItem(
                     jsonResponse.getHits().get(i).getRecipe().getLabel(),
                     jsonResponse.getHits().get(i).getRecipe().getCalories(),
-                    jsonResponse.getHits().get(i).getRecipe().getIngredientLines(),
+                   jsonResponse.getHits().get(i).getRecipe().getIngredientLines(),
                     jsonResponse.getHits().get(i).getRecipe().getImages().getSMALL().getUrl()
             ));
 

@@ -84,4 +84,5 @@
         <item>Arakas description</item>
         <item>Fasolakia description</item>
     </string-array>
+    <string name="title_activity_main_page">MainPageActivity</string>
 </resources>

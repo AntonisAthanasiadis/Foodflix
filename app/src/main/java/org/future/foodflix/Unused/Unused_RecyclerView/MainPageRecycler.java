@@ -1,4 +1,4 @@
-package org.future.foodflix.RecyclerView_MainPage;
+package org.future.foodflix.Unused.Unused_RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,7 +39,7 @@ public class MainPageRecycler extends AppCompatActivity {
         parentRecyclerView = findViewById(R.id.parent_recyclerview);
         parentRecyclerView.setHasFixedSize(true);
         parentLayoutManager = new LinearLayoutManager(this);
-        ParentAdapter = new ParentRecyclerViewAdapter(parentModelArrayList, org.future.foodflix.RecyclerView_MainPage.MainPageRecycler.this);
+        ParentAdapter = new ParentRecyclerViewAdapter(parentModelArrayList, org.future.foodflix.Unused.Unused_RecyclerView.MainPageRecycler.this);
         parentRecyclerView.setLayoutManager(parentLayoutManager);
         parentRecyclerView.setAdapter(ParentAdapter);
         ParentAdapter.notifyDataSetChanged();

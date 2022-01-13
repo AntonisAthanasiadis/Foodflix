@@ -50,15 +50,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-<!--    <TetView-->
-<!--        android:id="@+id/BtnInfo"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Information"-->
+    <TextView
+        android:id="@+id/tapText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Tap to see ingredients"
+        android:gravity="center"
 
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/imageView" />-->
+        app:layout_constraintTop_toBottomOf="@id/Description"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

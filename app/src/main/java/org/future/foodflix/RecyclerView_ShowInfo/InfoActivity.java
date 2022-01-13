@@ -1,4 +1,4 @@
-package org.future.foodflix.RecyclerViewInfo;
+package org.future.foodflix.RecyclerView_ShowInfo;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -12,14 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.google.gson.Gson;
-
-import org.future.foodflix.Network.JsonResponse.JsonResponse;
 import org.future.foodflix.R;
-import org.future.foodflix.RecyclerView_ShowSearchResults.ListItem;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class InfoActivity extends AppCompatActivity {
 
