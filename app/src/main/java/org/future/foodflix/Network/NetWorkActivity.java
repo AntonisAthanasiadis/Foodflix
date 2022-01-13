@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 
 import org.future.foodflix.CheckActions;
 import org.future.foodflix.Network.JsonResponse.JsonResponse;
+import org.future.foodflix.OnErrorActivity;
 import org.future.foodflix.R;
 import org.future.foodflix.RecyclerView_ShowSearchResults.ListItem;
 import org.future.foodflix.RecyclerView_ShowSearchResults.ShowResultsActivity;
@@ -69,7 +70,7 @@ public class NetWorkActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-            progressDialog.show();
+
 
                 CheckBox vegetarian = findViewById(R.id.vegetarian);
                 CheckBox vegan = findViewById(R.id.vegan);
@@ -127,21 +128,29 @@ public class NetWorkActivity extends AppCompatActivity {
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
+                                progressDialog.show();
                                 jsonResponse = gson.fromJson(response, JsonResponse.class);
                                 LoadRecyclerViewData(jsonResponse);
+
+                                if(listItems.isEmpty()) {
+                                    Intent intent = new Intent(NetWorkActivity.this, OnErrorActivity.class);
+                                    startActivity(intent);
+                                }
+                            else{
 
                                 Intent intent = new Intent(NetWorkActivity.this, ShowResultsActivity.class);
                                 intent.putExtra("response", listItems);
                                 startActivity(intent);
 
-                                progressDialog.dismiss();
+                                progressDialog.dismiss();}
                                 //    Display the first 500 characters of the response string.
                             }
                         }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(NetWorkActivity.this, "An error occured:\n"+ error.getMessage(),Toast.LENGTH_LONG).show();
 
+                        Intent intent = new Intent(NetWorkActivity.this, OnErrorActivity.class);
+                        startActivity(intent);
                     }
                 });
 

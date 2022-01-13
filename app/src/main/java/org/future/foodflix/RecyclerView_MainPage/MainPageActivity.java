@@ -113,6 +113,7 @@ public class MainPageActivity extends AppCompatActivity {
                         recyclerView.setAdapter(myAdapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(MainPageActivity.this));
 
+
                         ProgressBar progressBar = findViewById(R.id.progressbar1);
                         progressBar.setVisibility(View.GONE);
 
