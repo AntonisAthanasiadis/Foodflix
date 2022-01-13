@@ -86,7 +86,7 @@ public class MainPageRecycler extends AppCompatActivity {
 
             @RequiresApi(api = Build.VERSION_CODES.O)
             public void startNotification2(){
-                NotificationChannel channel2 = new NotificationChannel(CHANNEL_ID2,"2", NotificationManager.IMPORTANCE_DEFAULT);
+                NotificationChannel channel2 = new NotificationChannel(CHANNEL_ID,"1", NotificationManager.IMPORTANCE_DEFAULT);
                 NotificationManager manager2 = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
                 manager2.createNotificationChannel(channel2);
                 Notification.Builder builder2 = new Notification.Builder(MainPageRecycler.this,CHANNEL_ID2);
