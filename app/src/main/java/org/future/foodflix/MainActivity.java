@@ -27,6 +27,7 @@ import java.util.List;
 public class MainActivity extends BaseActivities {
     @Nullable
     private DatabaseSchema db;
+    public int UserId;
     @Override
     public int getLayoutId() {
         return R.layout.activity_main;
@@ -34,10 +35,18 @@ public class MainActivity extends BaseActivities {
 
     @Override
     public void useUIElements() {
+
+        ImageView backbtn =findViewById(R.id.mainbackbtn);
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Data Loading...");
 
-        ImageView imageView =findViewById(R.id.backbtn);
+        ImageView imageView =findViewById(R.id.mainbackbtn);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

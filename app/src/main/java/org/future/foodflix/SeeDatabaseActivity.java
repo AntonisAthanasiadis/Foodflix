@@ -10,6 +10,7 @@ import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.future.foodflix.Storage.AsynchTasks.ReadDb;
@@ -32,6 +33,14 @@ public class SeeDatabaseActivity extends AppCompatActivity {
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+        ImageView backbtn =findViewById(R.id.seedbbackbtn);
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
         db = Room.databaseBuilder(SeeDatabaseActivity.this, DatabaseSchema.class,"foodflix").build();
         Button see = findViewById(R.id.show);
         see.setOnClickListener(new View.OnClickListener() {

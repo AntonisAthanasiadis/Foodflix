@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -15,7 +16,13 @@ public class forgotActivity extends BaseActivities{
 
     @Override
     public void useUIElements() {
-
+        ImageView imageView = findViewById(R.id.sendemailbackbtn);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         Button send = findViewById(R.id.sendEmailButton);
         send.setOnClickListener(new View.OnClickListener() {
             @Override

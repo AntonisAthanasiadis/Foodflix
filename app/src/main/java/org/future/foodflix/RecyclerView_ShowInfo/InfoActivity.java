@@ -29,7 +29,13 @@ public class InfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredients);
 
-
+        ImageView backbtn =findViewById(R.id.recyclerbackbtn2);
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
        ingredients = (ArrayList<String>) getIntent().getSerializableExtra("Ingredients");
         recyclerView = findViewById(R.id.RV2);
 

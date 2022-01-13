@@ -61,11 +61,14 @@ public class NetWorkActivity extends AppCompatActivity {
                 CheckActions.switchCompatCheckedUI((SwitchCompat) buttonView,slider);
             }
         });
-
+        ImageView imageView = findViewById(R.id.searchbackbtn);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         Button nwbtn = findViewById(R.id.search_button);
-
-
-
         nwbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,6 +125,7 @@ public class NetWorkActivity extends AppCompatActivity {
                         "&app_id=85236044&app_key=d2448eb147c0c48689ed8a40d9c107de";
 
                 url=CheckActions.ingrCheck(url,ingr,diet,health,calories);
+//                Toast.makeText(NetWorkActivity.this, "URL\n"+ url,Toast.LENGTH_LONG).show();
 
                 //    Request a string response from the provided URL.
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -156,19 +160,6 @@ public class NetWorkActivity extends AppCompatActivity {
 
                 //   Add the request to the RequestQueue.
                 queue.add(stringRequest);
-
-
-                ImageView imageView = findViewById(R.id.searchbackbtn);
-                imageView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        onBackPressed();
-                    }
-                });
-//                Toast.makeText(NetWorkActivity.this,url,Toast.LENGTH_LONG).show();
-
-
-
             }
         });
     }
