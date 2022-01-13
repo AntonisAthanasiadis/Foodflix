@@ -72,7 +72,7 @@ public class NetWorkActivity extends AppCompatActivity {
         nwbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                progressDialog.show();
 
 
                 CheckBox vegetarian = findViewById(R.id.vegetarian);
@@ -132,7 +132,7 @@ public class NetWorkActivity extends AppCompatActivity {
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-                                progressDialog.show();
+
                                 jsonResponse = gson.fromJson(response, JsonResponse.class);
                                 LoadRecyclerViewData(jsonResponse);
 

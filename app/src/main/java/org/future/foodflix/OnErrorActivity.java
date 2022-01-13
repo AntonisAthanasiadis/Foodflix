@@ -47,8 +47,7 @@ public class OnErrorActivity extends AppCompatActivity {
                 if (isDestroyed()||isFinishing()){
                     return;
                 }
-                Intent intent = new Intent(OnErrorActivity.this, NetWorkActivity.class);
-                startActivityForResult(intent,2200);
+                onBackPressed();
             }
         });
     }

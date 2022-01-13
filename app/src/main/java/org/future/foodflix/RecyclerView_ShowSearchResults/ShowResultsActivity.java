@@ -92,8 +92,8 @@ public class ShowResultsActivity extends AppCompatActivity {
                 if (isDestroyed()||isFinishing()){
                     return;
                 }
-                Intent intent = new Intent(ShowResultsActivity.this, NetWorkActivity.class);
-                startActivityForResult(intent,2000);
+                onBackPressed();
+
             }
         });
 

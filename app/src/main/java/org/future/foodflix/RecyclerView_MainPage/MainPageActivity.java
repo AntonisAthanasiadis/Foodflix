@@ -46,7 +46,7 @@ public class MainPageActivity extends AppCompatActivity {
 
 
 
-    String[] randomFoods = {"meat", "rice", "chicken", "pizza","pasta"};
+    String[] randomFoods = {"chicken", "pizza","pasta"};
     Random rand = new Random();
     String randomFood = randomFoods[rand.nextInt(randomFoods.length)];
 

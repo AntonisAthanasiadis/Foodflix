@@ -1,5 +1,6 @@
 package org.future.foodflix;
 
+import android.util.Log;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
@@ -48,6 +49,7 @@ public class CheckActions {
             s[0] += "-";
         }
         s[0] = s[0].substring(0, s[0].length() - 1);
+
         return s[0];
     }
 
